@@ -77,8 +77,11 @@ class _SignUpState extends State<SignUp> {
                     labelStyle: GoogleFonts.lato(fontSize: 20),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     hintText: "Brad Johnson",
+<<<<<<< HEAD:lib/auth_pages/sign_up.dart
                     hintStyle: GoogleFonts.lato(fontSize: 18),
                     fillColor: HexColor("939393"),
+=======
+>>>>>>> 3a0952fb604aabf1d20c7c3fb325a02f029a2f3e:lib/auth_pages/signUp.dart
                     border: OutlineInputBorder(
                       borderSide:
                           BorderSide(color: HexColor("2E2E2E"), width: 1),
@@ -99,9 +102,13 @@ class _SignUpState extends State<SignUp> {
                     label: Text("Username"),
                     labelStyle: GoogleFonts.lato(fontSize: 20),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
+<<<<<<< HEAD:lib/auth_pages/sign_up.dart
                     hintText: "bradjohnson19",
                     hintStyle: GoogleFonts.lato(fontSize: 18),
                     fillColor: HexColor("939393"),
+=======
+                    hintText: "BradJohnson119",
+>>>>>>> 3a0952fb604aabf1d20c7c3fb325a02f029a2f3e:lib/auth_pages/signUp.dart
                     border: OutlineInputBorder(
                       borderSide:
                           BorderSide(color: HexColor("2E2E2E"), width: 1),
@@ -122,9 +129,13 @@ class _SignUpState extends State<SignUp> {
                     label: Text("E-mail Address"),
                     labelStyle: GoogleFonts.lato(fontSize: 20),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
+<<<<<<< HEAD:lib/auth_pages/sign_up.dart
                     hintText: "bradjohnson19@gmail.com",
                     hintStyle: GoogleFonts.lato(fontSize: 18),
                     fillColor: HexColor("939393"),
+=======
+                    hintText: "bradJohnson19@gmail.com",
+>>>>>>> 3a0952fb604aabf1d20c7c3fb325a02f029a2f3e:lib/auth_pages/signUp.dart
                     border: OutlineInputBorder(
                       borderSide:
                           BorderSide(color: HexColor("2E2E2E"), width: 1),
