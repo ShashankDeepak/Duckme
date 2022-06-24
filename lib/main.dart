@@ -1,6 +1,6 @@
 import 'package:duckme/auth_pages/auth_page.dart';
-import 'package:duckme/auth_pages/signUp.dart';
-import 'package:duckme/titlePage.dart';
+import 'package:duckme/auth_pages/sign_up.dart';
+import 'package:duckme/title_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'auth_pages/login_page.dart';

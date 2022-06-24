@@ -99,7 +99,7 @@ class _loginPageState extends State<loginPage> {
                           BorderSide(color: HexColor("2E2E2E"), width: 1),
                       borderRadius: BorderRadius.circular(18),
                     ),
-                    hintText: 'Peepee@17',
+                    hintText: '********',
                     hintStyle: GoogleFonts.lato(fontSize: 18),
                     fillColor: HexColor("939393"),
                     suffixIcon: IconButton(
@@ -138,7 +138,7 @@ class _loginPageState extends State<loginPage> {
               borderRadius: BorderRadius.circular(60),
               child: SizedBox(
                 width: w(0.65),
-                height: h(0.065),
+                height: h(0.075),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: HexColor("FF5D02").withOpacity(0.8),

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -38,82 +39,123 @@ class _SignUpState extends State<SignUp> {
         child: Container(
           width: w(1),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.only(top: h(0.06), left: 30.0),
+                padding: EdgeInsets.only(top: h(0.06), right: w(0.508)),
                 child: Text(
                   "SignUp",
-                  style: GoogleFonts.lato(fontSize: 60),
+                  style: GoogleFonts.lato(
+                    fontSize: 50,
+                    color: HexColor("2E2E2E"),
+                  ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: h(0.014), left: 30.0),
+                padding: EdgeInsets.only(
+                  top: h(0.014),
+                  right: w(0.65),
+                ),
                 child: Text(
                   "Welcome!",
-                  style: GoogleFonts.lato(fontSize: 20),
+                  style: GoogleFonts.lato(
+                    fontSize: 22,
+                    color: HexColor("2E2E2E"),
+                  ),
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.only(right: 30.0, top: 30, left: 30.0),
+                padding: EdgeInsets.only(
+                  right: w(0.05),
+                  top: h(0.03),
+                  left: w(0.05),
+                ),
                 child: TextField(
                   controller: nameController,
                   decoration: InputDecoration(
                     label: Text("Name"),
+                    labelStyle: GoogleFonts.lato(fontSize: 20),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: "BradPit",
+                    hintText: "Brad Johnson",
+                    hintStyle: GoogleFonts.lato(fontSize: 18),
+                    fillColor: HexColor("939393"),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderSide:
+                          BorderSide(color: HexColor("2E2E2E"), width: 1),
+                      borderRadius: BorderRadius.circular(18),
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.only(right: 30.0, top: 30, left: 30.0),
+                padding: EdgeInsets.only(
+                  right: w(0.05),
+                  top: h(0.03),
+                  left: w(0.05),
+                ),
                 child: TextField(
                   controller: usernameController,
                   decoration: InputDecoration(
                     label: Text("Username"),
+                    labelStyle: GoogleFonts.lato(fontSize: 20),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: "BradPit119",
+                    hintText: "bradjohnson19",
+                    hintStyle: GoogleFonts.lato(fontSize: 18),
+                    fillColor: HexColor("939393"),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderSide:
+                          BorderSide(color: HexColor("2E2E2E"), width: 1),
+                      borderRadius: BorderRadius.circular(18),
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.only(right: 30.0, top: 30, left: 30.0),
+                padding: EdgeInsets.only(
+                  right: w(0.05),
+                  top: h(0.03),
+                  left: w(0.05),
+                ),
                 child: TextField(
                   controller: emailController,
                   decoration: InputDecoration(
                     label: Text("E-mail Address"),
+                    labelStyle: GoogleFonts.lato(fontSize: 20),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: "bradpit19@gmail.com",
+                    hintText: "bradjohnson19@gmail.com",
+                    hintStyle: GoogleFonts.lato(fontSize: 18),
+                    fillColor: HexColor("939393"),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderSide:
+                          BorderSide(color: HexColor("2E2E2E"), width: 1),
+                      borderRadius: BorderRadius.circular(18),
                     ),
                   ),
                   keyboardType: TextInputType.emailAddress,
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.only(right: 30.0, top: 30, left: 30.0),
+                padding: EdgeInsets.only(
+                  right: w(0.05),
+                  top: h(0.03),
+                  left: w(0.05),
+                ),
                 child: TextField(
                   //controller: passwordController,
                   style: TextStyle(fontSize: 16.0),
                   obscureText: _obscureText,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderSide:
+                          BorderSide(color: HexColor("2E2E2E"), width: 1),
+                      borderRadius: BorderRadius.circular(18),
                     ),
                     label: Text("Password"),
+                    labelStyle: GoogleFonts.lato(fontSize: 20),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     hintText: "********",
+                    hintStyle: GoogleFonts.lato(fontSize: 18),
+                    fillColor: HexColor("939393"),
                     suffixIcon: IconButton(
                       icon: (_obscureText
                           ? Icon(Icons.visibility)
@@ -132,11 +174,11 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 20, left: 50),
+                padding: EdgeInsets.only(top: h(0.02)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: SizedBox(
-                    width: w(0.75),
+                    width: w(0.65),
                     height: h(0.075),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(primary: Colors.orange),
@@ -152,7 +194,12 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              SvgPicture.asset("assets/Bottom people.svg"),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: h(0.0155),
+                ),
+                child: SvgPicture.asset("assets/Bottom people.svg"),
+              ),
             ],
           ),
         ),
