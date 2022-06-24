@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:duckme/Class/Firebase.dart';
+import 'package:duckme/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -14,17 +17,66 @@ class SignUp extends StatefulWidget {
 
 bool _obscureText = true;
 
+String name = "";
+String username = "";
+String email = "";
+String password = "";
+
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     double heightOfDevice = MediaQuery.of(context).size.height;
     double widthOfDevice = MediaQuery.of(context).size.width;
 
-    TextEditingController nameController = TextEditingController();
-    TextEditingController usernameController = TextEditingController();
-    TextEditingController emailController = TextEditingController();
+    bool snackBar(String name, String username, String email, String password) {
+      if (!email.contains('@')) {
+        final snackBar = SnackBar(
+          content: const Text('Please enter a vaild email'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        return false;
+      }
+      if (password.length < 6) {
+        final snackBar = SnackBar(
+          content: const Text('Password must be greater than 6'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        return false;
+      }
+      if (name == '') {
+        final snackBar = SnackBar(
+          content: const Text('Name cannot be empty'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        return false;
+      }
+      if (username == '') {
+        final snackBar = SnackBar(
+          content: const Text('Username cannot be empty'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        return false;
+      }
+      if (email == '') {
+        final snackBar = SnackBar(
+          content: const Text('Email cannot be empty'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        return false;
+      }
+      if (password == '') {
+        final snackBar = SnackBar(
+          content: const Text('Password cannot be empty'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        return false;
+      }
+      return true;
+    }
 
-    String password = "";
+    void signUp(String email, String password) {
+      if (email == "") {}
+    }
 
     double h(double height) {
       return heightOfDevice * height;
@@ -71,7 +123,6 @@ class _SignUpState extends State<SignUp> {
                   left: w(0.05),
                 ),
                 child: TextField(
-                  controller: nameController,
                   decoration: InputDecoration(
                     label: Text("Name"),
                     labelStyle: GoogleFonts.lato(fontSize: 20),
@@ -85,6 +136,10 @@ class _SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(18),
                     ),
                   ),
+                  onChanged: (value) {
+                    name = value;
+                    //(name);
+                  },
                 ),
               ),
               Padding(
@@ -94,7 +149,6 @@ class _SignUpState extends State<SignUp> {
                   left: w(0.05),
                 ),
                 child: TextField(
-                  controller: usernameController,
                   decoration: InputDecoration(
                     label: Text("Username"),
                     labelStyle: GoogleFonts.lato(fontSize: 20),
@@ -108,6 +162,10 @@ class _SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(18),
                     ),
                   ),
+                  onChanged: (value) {
+                    username = value;
+                    //(password);
+                  },
                 ),
               ),
               Padding(
@@ -117,7 +175,6 @@ class _SignUpState extends State<SignUp> {
                   left: w(0.05),
                 ),
                 child: TextField(
-                  controller: emailController,
                   decoration: InputDecoration(
                     label: Text("E-mail Address"),
                     labelStyle: GoogleFonts.lato(fontSize: 20),
@@ -132,6 +189,10 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   keyboardType: TextInputType.emailAddress,
+                  onChanged: (value) {
+                    email = value;
+                    //(password);
+                  },
                 ),
               ),
               Padding(
@@ -140,7 +201,7 @@ class _SignUpState extends State<SignUp> {
                   top: h(0.03),
                   left: w(0.05),
                 ),
-                child: TextField(
+                child: TextFormField(
                   //controller: passwordController,
                   style: TextStyle(fontSize: 16.0),
                   obscureText: _obscureText,
@@ -167,9 +228,10 @@ class _SignUpState extends State<SignUp> {
                       },
                     ),
                   ),
+
                   onChanged: (value) {
                     password = value;
-                    //print(password);
+                    //(password);
                   },
                 ),
               ),
@@ -182,7 +244,17 @@ class _SignUpState extends State<SignUp> {
                     height: h(0.075),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(primary: Colors.orange),
-                      onPressed: () {},
+                      onPressed: () {
+                        if (snackBar(name, username, email, password)) {
+                          FireAuth auth = FireAuth();
+                          auth.createWithMail(email, password);
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Home()),
+                          );
+                        }
+                      },
                       child: Text(
                         "SIGNUP",
                         style: GoogleFonts.lato(
