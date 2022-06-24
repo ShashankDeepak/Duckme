@@ -1,4 +1,5 @@
 import 'package:duckme/auth_pages/auth_page.dart';
+import 'package:duckme/auth_pages/signUp.dart';
 import 'package:duckme/titlePage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: loginPage(),
+      home: SignUp(),
     );
   }
 }
