@@ -2,6 +2,7 @@ import 'package:duckme/auth_pages/auth_page.dart';
 import 'package:duckme/titlePage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'auth_pages/login_page.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -20,9 +21,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
-      home: authPage(),
+      home: loginPage(),
     );
   }
 }

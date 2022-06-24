@@ -95,7 +95,10 @@ class authPage extends StatelessWidget {
                 ),
                 child: Text(
                   "SIGNUP",
-                  style: GoogleFonts.lato(fontSize: 22),
+                  style: GoogleFonts.lato(
+                    fontSize: 22,
+                    color: HexColor('FFFFFF'),
+                  ),
                 ),
                 onPressed: () {},
               ),
