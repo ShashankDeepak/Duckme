@@ -62,7 +62,7 @@ class _SignUpState extends State<SignUp> {
                   decoration: InputDecoration(
                     label: Text("Name"),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: "BradPit",
+                    hintText: "Brad Johnson",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -77,7 +77,7 @@ class _SignUpState extends State<SignUp> {
                   decoration: InputDecoration(
                     label: Text("Username"),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: "BradPit119",
+                    hintText: "BradJohnson119",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -92,7 +92,7 @@ class _SignUpState extends State<SignUp> {
                   decoration: InputDecoration(
                     label: Text("E-mail Address"),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: "bradpit19@gmail.com",
+                    hintText: "bradJohnson19@gmail.com",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
