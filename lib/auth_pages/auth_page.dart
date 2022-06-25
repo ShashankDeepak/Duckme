@@ -144,7 +144,7 @@ class authPage extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: h(0.015),
+              top: h(0.042),
             ),
           ),
           SvgPicture.asset("assets/Bottom people.svg"),

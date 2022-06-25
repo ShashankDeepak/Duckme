@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:duckme/auth_pages/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,8 +24,6 @@ class titlePage extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-        width: w(1),
-        height: h(1),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -36,7 +35,7 @@ class titlePage extends StatelessWidget {
           children: [
             Container(
               alignment: Alignment.centerRight,
-              padding: EdgeInsets.only(top: 40),
+              padding: EdgeInsets.only(top: h(0.08)),
               child: SvgPicture.asset("assets/Group 28.svg"),
             ),
             Text(
@@ -44,7 +43,7 @@ class titlePage extends StatelessWidget {
               style: GoogleFonts.lato(fontSize: 35),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 30.0, bottom: 20),
+              padding: EdgeInsets.only(top: h(0.058), bottom: 20),
               child: SvgPicture.asset("assets/good group.svg", width: w(0.85)),
             ),
             SvgPicture.asset("assets/Group 27.svg"),
@@ -73,7 +72,12 @@ class titlePage extends StatelessWidget {
                       height: h(0.075),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(primary: Colors.orange),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => authPage()),
+                          );
+                        },
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(

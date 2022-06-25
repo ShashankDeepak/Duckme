@@ -33,7 +33,7 @@ class _loginPageState extends State<loginPage> {
           children: [
             Padding(
               padding: EdgeInsets.only(
-                top: h(0.12),
+                top: h(0.16),
                 right: w(0.619),
               ),
               child: Text(
