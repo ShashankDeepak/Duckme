@@ -1,6 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:duckme/auth_pages/auth_page.dart';
 import 'package:duckme/auth_pages/sign_up.dart';
+import 'package:duckme/home.dart';
 import 'package:duckme/title_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'auth_pages/login_page.dart';
@@ -24,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: titlePage(),
+      home: (FirebaseAuth.instance.currentUser == null ? titlePage() : Home()),
     );
   }
 }

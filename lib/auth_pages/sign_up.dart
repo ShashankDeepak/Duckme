@@ -1,6 +1,5 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_build_context_synchronously
 
-import 'package:duckme/Class/Firebase.dart';
 import 'package:duckme/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,7 +17,6 @@ class SignUp extends StatefulWidget {
 bool _obscureText = true;
 
 String name = "";
-String username = "";
 String email = "";
 String password = "";
 
@@ -28,7 +26,7 @@ class _SignUpState extends State<SignUp> {
     double heightOfDevice = MediaQuery.of(context).size.height;
     double widthOfDevice = MediaQuery.of(context).size.width;
 
-    bool snackBar(String name, String username, String email, String password) {
+    bool snackBar(String name, String email, String password) {
       if (!email.contains('@')) {
         final snackBar = SnackBar(
           content: const Text('Please enter a vaild email'),
@@ -50,13 +48,7 @@ class _SignUpState extends State<SignUp> {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
         return false;
       }
-      if (username == '') {
-        final snackBar = SnackBar(
-          content: const Text('Username cannot be empty'),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        return false;
-      }
+
       if (email == '') {
         final snackBar = SnackBar(
           content: const Text('Email cannot be empty'),
@@ -150,32 +142,6 @@ class _SignUpState extends State<SignUp> {
                 ),
                 child: TextField(
                   decoration: InputDecoration(
-                    label: Text("Username"),
-                    labelStyle: GoogleFonts.lato(fontSize: 20),
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintText: "bradjohnson19",
-                    hintStyle: GoogleFonts.lato(fontSize: 18),
-                    fillColor: HexColor("939393"),
-                    border: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: HexColor("2E2E2E"), width: 1),
-                      borderRadius: BorderRadius.circular(18),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    username = value;
-                    //(password);
-                  },
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  right: w(0.05),
-                  top: h(0.03),
-                  left: w(0.05),
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
                     label: Text("E-mail Address"),
                     labelStyle: GoogleFonts.lato(fontSize: 20),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -243,16 +209,28 @@ class _SignUpState extends State<SignUp> {
                     width: w(0.65),
                     height: h(0.075),
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: Colors.orange),
-                      onPressed: () {
-                        if (snackBar(name, username, email, password)) {
-                          FireAuth auth = FireAuth();
-                          auth.createWithMail(email, password);
-
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Home()),
-                          );
+                      style: ElevatedButton.styleFrom(
+                          primary: HexColor("FF5D02").withOpacity(0.8)),
+                      onPressed: () async {
+                        if (snackBar(name, email, password)) {
+                          try {
+                            UserCredential credential = await FirebaseAuth
+                                .instance
+                                .createUserWithEmailAndPassword(
+                                    email: email, password: password);
+                            if (credential != null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Home()),
+                              );
+                            }
+                          } on FirebaseAuthException {
+                            final snackBar = SnackBar(
+                              content: Text('Email already in use'),
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }
                         }
                       },
                       child: Text(
@@ -268,7 +246,7 @@ class _SignUpState extends State<SignUp> {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  top: h(0.0155),
+                  top: h(0.1),
                 ),
                 child: SvgPicture.asset("assets/Bottom people.svg"),
               ),

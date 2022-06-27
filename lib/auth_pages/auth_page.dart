@@ -1,3 +1,5 @@
+import 'package:duckme/auth_pages/login_page.dart';
+import 'package:duckme/auth_pages/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -100,7 +102,12 @@ class authPage extends StatelessWidget {
                     color: HexColor('FFFFFF'),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignUp()),
+                  );
+                },
               ),
             ),
           ),
@@ -130,7 +137,12 @@ class authPage extends StatelessWidget {
                   color: HexColor("FF5D02").withOpacity(0.8),
                 )),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => loginPage()),
+                );
+              },
             ),
           ),
           Padding(
@@ -144,7 +156,7 @@ class authPage extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: h(0.042),
+              top: h(0.0429),
             ),
           ),
           SvgPicture.asset("assets/Bottom people.svg"),
