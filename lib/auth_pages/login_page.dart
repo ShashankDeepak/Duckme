@@ -188,12 +188,6 @@ class _loginPageState extends State<loginPage> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: h(0.077),
-              ),
-            ),
-            SvgPicture.asset("assets/Bottom people.svg"),
           ],
         ),
       ),

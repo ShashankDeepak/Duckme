@@ -254,12 +254,6 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: h(0.1),
-                ),
-                child: SvgPicture.asset("assets/Bottom people.svg"),
-              ),
             ],
           ),
         ),
