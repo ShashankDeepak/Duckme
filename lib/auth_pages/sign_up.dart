@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:duckme/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,11 +15,15 @@ class SignUp extends StatefulWidget {
   State<SignUp> createState() => _SignUpState();
 }
 
+FirebaseFirestore firestore = FirebaseFirestore.instance;
+User? user = FirebaseAuth.instance.currentUser;
+
 bool _obscureText = true;
 
 String name = "";
 String email = "";
 String password = "";
+var uid = user!.uid;
 
 class _SignUpState extends State<SignUp> {
   @override
@@ -219,6 +224,11 @@ class _SignUpState extends State<SignUp> {
                                 .createUserWithEmailAndPassword(
                                     email: email, password: password);
                             if (credential != null) {
+                              await firestore.collection("users").doc(uid).set({
+                                "name": name,
+                                "email": email,
+                              });
+
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) => Home()),
