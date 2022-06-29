@@ -154,12 +154,6 @@ class authPage extends StatelessWidget {
             "This app is powered by Microsoft Student Community, KIIT",
             style: GoogleFonts.lato(fontSize: 9),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: h(0.0429),
-            ),
-          ),
-          SvgPicture.asset("assets/Bottom people.svg"),
         ],
       ),
     );
