@@ -3,6 +3,7 @@
 import 'package:duckme/auth_pages/auth_page.dart';
 import 'package:duckme/auth_pages/sign_up.dart';
 import 'package:duckme/home.dart';
+import 'package:duckme/profile_page.dart';
 import 'package:duckme/title_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: (FirebaseAuth.instance.currentUser == null ? titlePage() : Home()),
+      home: ProfilePage(),
+      //(FirebaseAuth.instance.currentUser == null ? titlePage() : Home()),
     );
   }
 }
