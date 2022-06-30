@@ -118,6 +118,7 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
           Divider(
+            thickness: 2,
             height: h(0.02),
             indent: w(0.1),
             endIndent: w(0.1),
@@ -140,29 +141,34 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
           Divider(
-            thickness: 0.5,
+            thickness: 2,
             height: h(0.02),
             indent: w(0.1),
             endIndent: w(0.1),
           ),
-          Row(
-            children: [
-              SvgPicture.asset("assets/Icons/Group.svg"),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: w(0.1),
-                ),
-                child: Text(
-                  "About Us",
-                  style: GoogleFonts.lato(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w300,
+          TextButton(
+            onPressed: () {},
+            child: Row(
+              children: [
+                SvgPicture.asset("assets/Icons/Group.svg"),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: w(0.1),
+                  ),
+                  child: Text(
+                    "About Us",
+                    style: GoogleFonts.lato(
+                      color: Colors.black,
+                      fontSize: 21,
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Divider(
+            thickness: 2,
             height: h(0.02),
             indent: w(0.1),
             endIndent: w(0.1),
@@ -185,6 +191,7 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
           Divider(
+            thickness: 2,
             height: h(0.02),
             indent: w(0.1),
             endIndent: w(0.1),
@@ -207,6 +214,7 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
           Divider(
+            thickness: 2,
             height: h(0.02),
             indent: w(0.1),
             endIndent: w(0.1),
