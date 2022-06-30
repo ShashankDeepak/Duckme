@@ -2,9 +2,9 @@
 
 import 'package:duckme/auth_pages/auth_page.dart';
 import 'package:duckme/auth_pages/sign_up.dart';
-import 'package:duckme/home.dart';
-import 'package:duckme/profile_page.dart';
-import 'package:duckme/title_page.dart';
+import 'package:duckme/pages/home.dart';
+import 'package:duckme/pages/profile_page.dart';
+import 'package:duckme/pages/title_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

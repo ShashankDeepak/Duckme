@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_null_comparison, use_build_context_synchronously
 
-import 'package:duckme/home.dart';
+import 'package:duckme/pages/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
