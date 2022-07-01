@@ -70,7 +70,7 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                      top: h(0.215),
+                      top: h(0.21),
                     ),
                     child: Container(
                       width: w(0.165),
@@ -98,53 +98,53 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ],
               ),
-            ],
-          ),
-          Row(
-            children: [
-              SvgPicture.asset("assets/Icons/User.svg"),
               Padding(
                 padding: EdgeInsets.only(
-                  left: w(0.1),
+                  left: w(0.2),
+                  top: h(0.4),
                 ),
-                child: Text(
-                  "Brad Johnson",
-                  style: GoogleFonts.lato(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w300,
-                  ),
+                child: Row(
+                  children: [
+                    SvgPicture.asset("assets/Icons/User.svg"),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: w(0.1),
+                      ),
+                      child: Text(
+                        "Brad Johnson",
+                        style: GoogleFonts.lato(
+                          fontSize: 21,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: w(0.2),
+                  top: h(0.45),
+                ),
+                child: Row(
+                  children: [
+                    SvgPicture.asset("assets/Icons/E-mail.svg"),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: w(0.1),
+                      ),
+                      child: Text(
+                        "bradj@gmail.com",
+                        style: GoogleFonts.lato(
+                          fontSize: 21,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
-          ),
-          Divider(
-            thickness: 2,
-            height: h(0.02),
-            indent: w(0.1),
-            endIndent: w(0.1),
-          ),
-          Row(
-            children: [
-              SvgPicture.asset("assets/Icons/E-mail.svg"),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: w(0.1),
-                ),
-                child: Text(
-                  "bradj@gmail.com",
-                  style: GoogleFonts.lato(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Divider(
-            thickness: 2,
-            height: h(0.02),
-            indent: w(0.1),
-            endIndent: w(0.1),
           ),
           TextButton(
             onPressed: () {},
@@ -168,7 +168,7 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           Divider(
-            thickness: 2,
+            thickness: 0.5,
             height: h(0.02),
             indent: w(0.1),
             endIndent: w(0.1),
@@ -191,7 +191,7 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
           Divider(
-            thickness: 2,
+            thickness: 0.5,
             height: h(0.02),
             indent: w(0.1),
             endIndent: w(0.1),
@@ -214,7 +214,7 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
           Divider(
-            thickness: 2,
+            thickness: 0.5,
             height: h(0.02),
             indent: w(0.1),
             endIndent: w(0.1),
