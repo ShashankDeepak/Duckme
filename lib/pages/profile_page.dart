@@ -100,22 +100,16 @@ class ProfilePage extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  left: w(0.2),
                   top: h(0.4),
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset("assets/Icons/User.svg"),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: w(0.1),
-                      ),
-                      child: Text(
-                        "Brad Johnson",
-                        style: GoogleFonts.lato(
-                          fontSize: 21,
-                          fontWeight: FontWeight.w300,
-                        ),
+                    Text(
+                      "Brad Johnson",
+                      style: GoogleFonts.lato(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w300,
                       ),
                     ),
                   ],
@@ -123,22 +117,16 @@ class ProfilePage extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  left: w(0.2),
-                  top: h(0.45),
+                  top: h(0.46),
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset("assets/Icons/E-mail.svg"),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: w(0.1),
-                      ),
-                      child: Text(
-                        "bradj@gmail.com",
-                        style: GoogleFonts.lato(
-                          fontSize: 21,
-                          fontWeight: FontWeight.w300,
-                        ),
+                    Text(
+                      "bradj@gmail.com",
+                      style: GoogleFonts.lato(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w300,
                       ),
                     ),
                   ],
@@ -148,23 +136,28 @@ class ProfilePage extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {},
-            child: Row(
-              children: [
-                SvgPicture.asset("assets/Icons/Group.svg"),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: w(0.1),
-                  ),
-                  child: Text(
-                    "About Us",
-                    style: GoogleFonts.lato(
-                      color: Colors.black,
-                      fontSize: 21,
-                      fontWeight: FontWeight.w300,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: w(0.18),
+                top: h(0.05),
+              ),
+              child: Row(
+                children: [
+                  SvgPicture.asset("assets/Icons/Group.svg"),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: w(0.1),
+                    ),
+                    child: Text(
+                      "About Us",
+                      style: GoogleFonts.lato(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w300,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Divider(
@@ -173,22 +166,30 @@ class ProfilePage extends StatelessWidget {
             indent: w(0.1),
             endIndent: w(0.1),
           ),
-          Row(
-            children: [
-              SvgPicture.asset("assets/Icons/Info.svg"),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: w(0.1),
-                ),
-                child: Text(
-                  "How to use?",
-                  style: GoogleFonts.lato(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
+          TextButton(
+            onPressed: () {},
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: w(0.18),
               ),
-            ],
+              child: Row(
+                children: [
+                  SvgPicture.asset("assets/Icons/Info.svg"),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: w(0.1),
+                    ),
+                    child: Text(
+                      "How to use?",
+                      style: GoogleFonts.lato(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           Divider(
             thickness: 0.5,
@@ -196,22 +197,30 @@ class ProfilePage extends StatelessWidget {
             indent: w(0.1),
             endIndent: w(0.1),
           ),
-          Row(
-            children: [
-              SvgPicture.asset("assets/Icons/Donate.svg"),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: w(0.1),
-                ),
-                child: Text(
-                  "Donate Us",
-                  style: GoogleFonts.lato(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
+          TextButton(
+            onPressed: () {},
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: w(0.18),
               ),
-            ],
+              child: Row(
+                children: [
+                  SvgPicture.asset("assets/Icons/Donate.svg"),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: w(0.1),
+                    ),
+                    child: Text(
+                      "Donate Us",
+                      style: GoogleFonts.lato(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           Divider(
             thickness: 0.5,
@@ -219,22 +228,30 @@ class ProfilePage extends StatelessWidget {
             indent: w(0.1),
             endIndent: w(0.1),
           ),
-          Row(
-            children: [
-              SvgPicture.asset("assets/Icons/Logout.svg"),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: w(0.1),
-                ),
-                child: Text(
-                  "Logout",
-                  style: GoogleFonts.lato(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
+          TextButton(
+            onPressed: () {},
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: w(0.18),
               ),
-            ],
+              child: Row(
+                children: [
+                  SvgPicture.asset("assets/Icons/Logout.svg"),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: w(0.1),
+                    ),
+                    child: Text(
+                      "Logout",
+                      style: GoogleFonts.lato(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
