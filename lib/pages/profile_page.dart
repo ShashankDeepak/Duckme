@@ -138,7 +138,7 @@ class ProfilePage extends StatelessWidget {
             onPressed: () {},
             child: Padding(
               padding: EdgeInsets.only(
-                left: w(0.18),
+                left: w(0.25),
                 top: h(0.05),
               ),
               child: Row(
@@ -149,10 +149,11 @@ class ProfilePage extends StatelessWidget {
                       left: w(0.1),
                     ),
                     child: Text(
-                      "About Us",
+                      "Credits",
                       style: GoogleFonts.lato(
                         fontSize: 21,
                         fontWeight: FontWeight.w300,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -170,7 +171,7 @@ class ProfilePage extends StatelessWidget {
             onPressed: () {},
             child: Padding(
               padding: EdgeInsets.only(
-                left: w(0.18),
+                left: w(0.25),
               ),
               child: Row(
                 children: [
@@ -184,6 +185,7 @@ class ProfilePage extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 21,
                         fontWeight: FontWeight.w300,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -201,7 +203,7 @@ class ProfilePage extends StatelessWidget {
             onPressed: () {},
             child: Padding(
               padding: EdgeInsets.only(
-                left: w(0.18),
+                left: w(0.25),
               ),
               child: Row(
                 children: [
@@ -215,6 +217,7 @@ class ProfilePage extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 21,
                         fontWeight: FontWeight.w300,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -232,7 +235,7 @@ class ProfilePage extends StatelessWidget {
             onPressed: () {},
             child: Padding(
               padding: EdgeInsets.only(
-                left: w(0.18),
+                left: w(0.25),
               ),
               child: Row(
                 children: [
@@ -246,6 +249,7 @@ class ProfilePage extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 21,
                         fontWeight: FontWeight.w300,
+                        color: Colors.black,
                       ),
                     ),
                   ),

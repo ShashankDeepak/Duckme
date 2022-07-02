@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: Home(),
+      home: ProfilePage(),
       //(FirebaseAuth.instance.currentUser == null ? titlePage() : Home()),
     );
   }
