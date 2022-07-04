@@ -1,14 +1,25 @@
-import 'dart:ui';
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
+import 'dart:ui';
+import 'package:duckme/pages/home.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:ui' as ui;
 
-class ProfilePage extends StatelessWidget {
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     double heightOfDevice = MediaQuery.of(context).size.height;
@@ -23,6 +34,41 @@ class ProfilePage extends StatelessWidget {
     }
 
     return Scaffold(
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+          child: GNav(
+            rippleColor: Colors.grey[300]!,
+            hoverColor: Colors.grey[100]!,
+            gap: 8,
+            activeColor: Colors.black,
+            iconSize: 24,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            duration: Duration(milliseconds: 400),
+            tabBackgroundColor: Colors.grey[100]!,
+            color: Colors.black,
+            tabs: [
+              GButton(
+                icon: CupertinoIcons.home,
+                text: 'Home',
+              ),
+              GButton(
+                  icon: MdiIcons.fileDocumentEditOutline,
+                  text: 'Likes',
+                  onPressed: () {
+                    Navigator.popUntil(context, (route) => route.isFirst);
+
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => Home()),
+                    );
+                  }),
+              GButton(icon: Icons.person, text: 'Search', onPressed: () {}),
+            ],
+            selectedIndex: 2,
+          ),
+        ),
+      ),
       body: Column(
         children: [
           Stack(

@@ -1,9 +1,13 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_build_context_synchronously
 
+import 'package:duckme/pages/profile_page.dart';
 import 'package:duckme/pages/title_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -21,6 +25,9 @@ List<String> profileImage = [
   "Surprised duck.svg",
   "Swag duck.svg"
 ];
+
+int _selectedIndex = 1;
+
 User? user = FirebaseAuth.instance.currentUser;
 var uid = user!.uid;
 
@@ -67,6 +74,49 @@ class _HomeState extends State<Home> {
             ),
           )
         ],
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+          child: GNav(
+            rippleColor: Colors.grey[300]!,
+            hoverColor: Colors.grey[100]!,
+            gap: 8,
+            activeColor: Colors.black,
+            iconSize: 24,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            duration: Duration(milliseconds: 400),
+            tabBackgroundColor: Colors.grey[100]!,
+            color: Colors.black,
+            tabs: [
+              GButton(
+                icon: CupertinoIcons.home,
+                text: 'Home',
+              ),
+              GButton(
+                icon: MdiIcons.fileDocumentEditOutline,
+                text: 'Likes',
+              ),
+              GButton(
+                  icon: Icons.person,
+                  text: 'Search',
+                  onPressed: () {
+                    Navigator.popUntil(context, (route) => route.isFirst);
+
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                    );
+                  }),
+            ],
+            selectedIndex: 1,
+            onTabChange: (index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Stack(
@@ -141,7 +191,7 @@ class _HomeState extends State<Home> {
                       padding: EdgeInsets.only(top: 20.0),
                       child: Container(
                         width: 390,
-                        height: 435,
+                        height: 620,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(58),
@@ -149,53 +199,126 @@ class _HomeState extends State<Home> {
                           ),
                           color: Colors.white,
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        child: Column(
                           children: [
-                            Container(
-                                width: 163,
-                                height: 58,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Color(0xffff8e4e),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Text(
-                                      "Fresher",
-                                      style: GoogleFonts.lato(fontSize: 20),
-                                    ),
-                                  ],
-                                )),
-                            Container(
-                                width: 163,
-                                height: 58,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Color(0xffff8e4e),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Container(
+                            Padding(
+                              padding: EdgeInsets.only(top: 45.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: 163,
+                                      height: 58,
                                       decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: AssetImage(
-                                            "assets/student1.png",
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Color(0xffff8e4e),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/Girl fresher.svg"),
+                                          Text(
+                                            "Freshman",
+                                            style: GoogleFonts.lato(
+                                                fontSize: 20,
+                                                color: Colors.white),
                                           ),
-                                          fit: BoxFit.contain,
-                                        ),
+                                        ],
                                       ),
                                     ),
-                                    Text(
-                                      "Experienced",
-                                      style: GoogleFonts.lato(fontSize: 20),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: 163,
+                                      height: 58,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Color(0xffff8e4e),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          SvgPicture.asset(
+                                              "assets/male employee.svg"),
+                                          Text(
+                                            "Experienced",
+                                            style: GoogleFonts.lato(
+                                                fontSize: 20,
+                                                color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ],
-                                ))
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: 500,
+                              child: GridView.count(
+                                // primary: false,
+                                physics: NeverScrollableScrollPhysics(),
+                                padding: const EdgeInsets.all(20),
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10,
+                                crossAxisCount: 2,
+                                childAspectRatio: 1 / 1.4,
+                                children: [
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: w(0.3),
+                                      height: h(0.25),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: Color(0xffd9d9d9),
+                                      ),
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: w(0.3),
+                                      height: h(0.25),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: Color(0xffd9d9d9),
+                                      ),
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: w(0.3),
+                                      height: h(0.25),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: Color(0xffd9d9d9),
+                                      ),
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: w(0.3),
+                                      height: h(0.25),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: Color(0xffd9d9d9),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
                           ],
                         ),
                       ),

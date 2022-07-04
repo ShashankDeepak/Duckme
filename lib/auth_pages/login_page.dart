@@ -127,22 +127,22 @@ class _loginPageState extends State<loginPage> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: h(0.02),
-                left: w(0.625),
-              ),
-              child: InkWell(
-                child: Text(
-                  'Forgot Password?',
-                  style: GoogleFonts.lato(
-                    fontSize: 14,
-                    color: HexColor('2E2E2E'),
-                  ),
-                ),
-                onTap: () {},
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.only(
+            //     top: h(0.02),
+            //     left: w(0.625),
+            //   ),
+            //   child: InkWell(
+            //     child: Text(
+            //       'Forgot Password?',
+            //       style: GoogleFonts.lato(
+            //         fontSize: 14,
+            //         color: HexColor('2E2E2E'),
+            //       ),
+            //     ),
+            //     onTap: () {},
+            //   ),
+            // ),
             Padding(
               padding: EdgeInsets.only(
                 top: h(0.06),
