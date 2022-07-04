@@ -56,9 +56,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   icon: MdiIcons.fileDocumentEditOutline,
                   text: 'Likes',
                   onPressed: () {
-                    Navigator.popUntil(context, (route) => route.isFirst);
-
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Home()),
                     );
