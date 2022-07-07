@@ -8,7 +8,7 @@ import 'package:duckme/pages/title_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'Templates/Template1.dart';
+import 'Templates/FresherTemplate1.dart';
 import 'auth_pages/login_page.dart';
 import 'firebase_options.dart';
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: Template1(),
+      home: fresherTemplate1(),
       //(FirebaseAuth.instance.currentUser == null ? titlePage() : Home()),
     );
   }
