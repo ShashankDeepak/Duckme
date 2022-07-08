@@ -1,19 +1,22 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:duckme/Templates/Templates%201/JobTemplate1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class fresherTemplate1 extends StatefulWidget {
-  fresherTemplate1({Key? key}) : super(key: key);
+import 'FresherTemplate1.dart';
+
+class intermidiateTemplate1 extends StatefulWidget {
+  intermidiateTemplate1({Key? key}) : super(key: key);
 
   @override
-  State<fresherTemplate1> createState() => _fresherTemplate1State();
+  State<intermidiateTemplate1> createState() => _intermidiateTemplate1State();
 }
 
-class _fresherTemplate1State extends State<fresherTemplate1> {
+class _intermidiateTemplate1State extends State<intermidiateTemplate1> {
   @override
   Widget build(BuildContext context) {
     double h(double height) {
@@ -47,7 +50,13 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
                 IconButton(
                   icon: Icon(Icons.arrow_back_ios),
                   color: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => fresherTemplate1()),
+                    );
+                  },
                 ),
                 Icon(
                   Icons.color_lens_rounded,
@@ -56,7 +65,12 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
                 IconButton(
                   icon: Icon(Icons.arrow_forward_ios),
                   color: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => jobTemplate1()),
+                    );
+                  },
                 ),
               ],
             ),
@@ -125,7 +139,7 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Awards",
+                                  "Achievements",
                                   style: GoogleFonts.lato(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
@@ -134,17 +148,11 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
                                 Padding(
                                   padding: EdgeInsets.only(top: 8.0),
                                   child: Text(
-                                    "2015",
+                                    "Achievements 1",
                                     style: GoogleFonts.lato(
-                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
                                     ),
-                                  ),
-                                ),
-                                Text(
-                                  "Awarad 1",
-                                  style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
                                   ),
                                 ),
                                 Padding(
@@ -159,17 +167,11 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
                                 Padding(
                                   padding: EdgeInsets.only(top: 15.0),
                                   child: Text(
-                                    "2016",
+                                    "Achievements 2",
                                     style: GoogleFonts.lato(
-                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
                                     ),
-                                  ),
-                                ),
-                                Text(
-                                  "Awarad 2",
-                                  style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
                                   ),
                                 ),
                                 Padding(
@@ -243,91 +245,53 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
                                     ],
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: h(0.02)),
-                                  child: Text(
-                                    "Intrests",
-                                    style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(top: 8.0),
-                                          child: Text(
-                                            "Chess",
-                                            style: GoogleFonts.lato(
-                                              fontSize: 12,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(top: 8.0),
-                                          child: Text(
-                                            "Gamming",
-                                            style: GoogleFonts.lato(
-                                              fontSize: 12,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(top: 8.0),
-                                          child: Text(
-                                            "Drawing",
-                                            style: GoogleFonts.lato(
-                                              fontSize: 12,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 20.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 8.0),
-                                            child: Text(
-                                              "Chess",
-                                              style: GoogleFonts.lato(
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 8.0),
-                                            child: Text(
-                                              "Gamming",
-                                              style: GoogleFonts.lato(
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 8.0),
-                                            child: Text(
-                                              "Drawing",
-                                              style: GoogleFonts.lato(
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
                               ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: h(0.03)),
+                            child: Text(
+                              "Skills",
+                              style: GoogleFonts.lato(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10.0),
+                            child: Text(
+                              "• C++",
+                              style: GoogleFonts.lato(
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: h(0.007),
+                          ),
+                          Text(
+                            "• Java",
+                            style: GoogleFonts.lato(
+                              fontSize: 12,
+                            ),
+                          ),
+                          SizedBox(
+                            height: h(0.007),
+                          ),
+                          Text(
+                            "• Python",
+                            style: GoogleFonts.lato(
+                              fontSize: 12,
+                            ),
+                          ),
+                          SizedBox(
+                            height: h(0.007),
+                          ),
+                          Text(
+                            "• Flutter",
+                            style: GoogleFonts.lato(
+                              fontSize: 12,
                             ),
                           ),
                         ],
@@ -369,35 +333,35 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  "Skills",
-                                  style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: h(0.008),
+                                  ),
+                                  child: Text(
+                                    "Internship",
+                                    style: GoogleFonts.lato(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
                                   ),
                                 ),
-                                Text(
-                                  "• C++",
-                                  style: GoogleFonts.lato(
-                                    fontSize: 12,
+                                Padding(
+                                  padding: EdgeInsets.only(top: h(0.015)),
+                                  child: Text(
+                                    "Internship 1",
+                                    style: GoogleFonts.lato(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
+                                    ),
                                   ),
                                 ),
-                                Text(
-                                  "• Java",
-                                  style: GoogleFonts.lato(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                Text(
-                                  "• Python",
-                                  style: GoogleFonts.lato(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                Text(
-                                  "• Flutter",
-                                  style: GoogleFonts.lato(
-                                    fontSize: 12,
+                                Padding(
+                                  padding: EdgeInsets.only(right: 8.0),
+                                  child: Text(
+                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
+                                    style: GoogleFonts.lato(
+                                      fontSize: 10,
+                                    ),
                                   ),
                                 ),
                                 Padding(
@@ -481,7 +445,7 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(
-                                    top: h(0.02),
+                                    top: h(0.01),
                                   ),
                                   child: Text(
                                     "GitHub",
@@ -502,7 +466,7 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(
-                                    top: h(0.02),
+                                    top: h(0.01),
                                   ),
                                   child: Text(
                                     "LinkDin",

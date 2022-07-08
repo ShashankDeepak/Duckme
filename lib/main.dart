@@ -1,15 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:duckme/auth_pages/auth_page.dart';
-import 'package:duckme/auth_pages/sign_up.dart';
 import 'package:duckme/pages/home.dart';
-import 'package:duckme/pages/profile_page.dart';
 import 'package:duckme/pages/title_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'Templates/FresherTemplate1.dart';
-import 'auth_pages/login_page.dart';
+import 'Templates/Templates 1/FresherTemplate1.dart';
 import 'firebase_options.dart';
 
 void main() async {
