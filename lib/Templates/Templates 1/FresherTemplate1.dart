@@ -77,476 +77,376 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
             ),
           ),
         ),
-        body: Stack(
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Row(
                 children: [
-                  IconButton(
-                    icon: Icon(Icons.arrow_back_ios),
-                    color: Colors.black,
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.arrow_forward_ios),
-                    color: Colors.black,
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        left: w(0.03),
-                        top: h(0.034),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: h(0.2)),
-                            child: Text(
-                              "Contacts",
-                              style: GoogleFonts.lato(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                  Expanded(
+                    child: Container(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: w(0.03),
+                          top: h(0.034),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: h(0.2)),
+                              child: Text(
+                                "Contacts",
+                                style: GoogleFonts.lato(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
                               ),
                             ),
-                          ),
-                          Text(
-                            "Email: " + "someone@something.com",
-                            style: GoogleFonts.lato(
-                              fontSize: 12,
+                            Text(
+                              "Email: " + "someone@something.com",
+                              style: GoogleFonts.lato(
+                                fontSize: 12,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "Phone: " + "+00 123456789",
-                            style: GoogleFonts.lato(
-                              fontSize: 12,
+                            Text(
+                              "Phone: " + "+00 123456789",
+                              style: GoogleFonts.lato(
+                                fontSize: 12,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: h(0.03),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Achievements",
-                                  style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 8.0),
-                                  child: Text(
-                                    "2015",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  "Achievements 1",
-                                  style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 8.0),
-                                  child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 15.0),
-                                  child: Text(
-                                    "2016",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  "Awarad 2",
-                                  style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 8.0),
-                                  child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    top: h(0.03),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Education",
-                                        style: GoogleFonts.lato(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(top: 8.0),
-                                        child: Text(
-                                          "2015 - 2020",
-                                          style: GoogleFonts.lato(
-                                            fontSize: 10,
-                                          ),
-                                        ),
-                                      ),
-                                      Text(
-                                        "University/Coledge",
-                                        style: GoogleFonts.lato(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                      Text(
-                                        "9.1",
-                                        style: GoogleFonts.lato(
-                                          fontSize: 10,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(top: 15.0),
-                                        child: Text(
-                                          "2013 - 2015",
-                                          style: GoogleFonts.lato(
-                                            fontSize: 10,
-                                          ),
-                                        ),
-                                      ),
-                                      Text(
-                                        "Secondary High School",
-                                        style: GoogleFonts.lato(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                      Text(
-                                        "94%",
-                                        style: GoogleFonts.lato(
-                                          fontSize: 10,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: h(0.02)),
-                                  child: Text(
-                                    "Intrests",
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: h(0.03),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Achievements",
                                     style: GoogleFonts.lato(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18,
                                     ),
                                   ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Column(
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 8.0),
+                                    child: Text(
+                                      "2015",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Achievements 1",
+                                    style: GoogleFonts.lato(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 8.0),
+                                    child: Text(
+                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 15.0),
+                                    child: Text(
+                                      "2016",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Awarad 2",
+                                    style: GoogleFonts.lato(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 8.0),
+                                    child: Text(
+                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      top: h(0.03),
+                                    ),
+                                    child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(top: 8.0),
-                                          child: Text(
-                                            "Chess",
-                                            style: GoogleFonts.lato(
-                                              fontSize: 12,
-                                            ),
+                                        Text(
+                                          "Education",
+                                          style: GoogleFonts.lato(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
                                           ),
                                         ),
                                         Padding(
                                           padding: EdgeInsets.only(top: 8.0),
                                           child: Text(
-                                            "Gamming",
+                                            "2015 - 2020",
                                             style: GoogleFonts.lato(
-                                              fontSize: 12,
+                                              fontSize: 10,
                                             ),
                                           ),
                                         ),
+                                        Text(
+                                          "University/Coledge",
+                                          style: GoogleFonts.lato(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        Text(
+                                          "9.1",
+                                          style: GoogleFonts.lato(
+                                            fontSize: 10,
+                                          ),
+                                        ),
                                         Padding(
-                                          padding: EdgeInsets.only(top: 8.0),
+                                          padding: EdgeInsets.only(top: 15.0),
                                           child: Text(
-                                            "Drawing",
+                                            "2013 - 2015",
                                             style: GoogleFonts.lato(
-                                              fontSize: 12,
+                                              fontSize: 10,
                                             ),
+                                          ),
+                                        ),
+                                        Text(
+                                          "Secondary High School",
+                                          style: GoogleFonts.lato(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        Text(
+                                          "94%",
+                                          style: GoogleFonts.lato(
+                                            fontSize: 10,
                                           ),
                                         ),
                                       ],
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 20.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 8.0),
-                                            child: Text(
-                                              "Chess",
-                                              style: GoogleFonts.lato(
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 8.0),
-                                            child: Text(
-                                              "Gamming",
-                                              style: GoogleFonts.lato(
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 8.0),
-                                            child: Text(
-                                              "Drawing",
-                                              style: GoogleFonts.lato(
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    color: Colors.grey,
-                    child: InkWell(
-                      onTap: () => {},
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: h(0.04),
-                            ),
-                            child: Text(
-                              name,
-                              style: GoogleFonts.josefinSlab(
-                                fontSize: 45,
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                          Text(
-                            "Deepak",
-                            style: GoogleFonts.josefinSlab(
-                              fontSize: 45,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: h(0.079),
-                              left: w(0.02),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Skills",
-                                  style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                Text(
-                                  "• C++",
-                                  style: GoogleFonts.lato(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                Text(
-                                  "• Java",
-                                  style: GoogleFonts.lato(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                Text(
-                                  "• Python",
-                                  style: GoogleFonts.lato(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                Text(
-                                  "• Flutter",
-                                  style: GoogleFonts.lato(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: h(0.03)),
-                                  child: Text(
-                                    "Projects",
-                                    style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: h(0.02)),
-                                  child: Text(
-                                    "Project Heading 1",
-                                    style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 8.0),
-                                  child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: h(0.015)),
-                                  child: Text(
-                                    "Project Heading 2",
-                                    style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 8.0),
-                                  child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    top: h(0.02),
-                                  ),
-                                  child: Text(
-                                    "Project Heading 3",
-                                    style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 8.0),
-                                  child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: h(0.03)),
-                                  child: Text(
-                                    "Socials",
-                                    style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    top: h(0.02),
-                                  ),
-                                  child: Text(
-                                    "GitHub",
-                                    style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 8.0),
-                                  child: Text(
-                                    "@shashankdeepak",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    top: h(0.02),
-                                  ),
-                                  child: Text(
-                                    "LinkDin",
-                                    style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 8.0),
-                                  child: Text(
-                                    "@shashankdeepak",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  Expanded(
+                    child: Container(
+                      color: Colors.grey,
+                      child: InkWell(
+                        onTap: () => {},
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: h(0.04),
+                              ),
+                              child: Text(
+                                name,
+                                style: GoogleFonts.josefinSlab(
+                                  fontSize: 45,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "Deepak",
+                              style: GoogleFonts.josefinSlab(
+                                fontSize: 45,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: h(0.079),
+                                left: w(0.02),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Skills",
+                                    style: GoogleFonts.lato(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  Text(
+                                    "• C++",
+                                    style: GoogleFonts.lato(
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Text(
+                                    "• Java",
+                                    style: GoogleFonts.lato(
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Text(
+                                    "• Python",
+                                    style: GoogleFonts.lato(
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Text(
+                                    "• Flutter",
+                                    style: GoogleFonts.lato(
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: h(0.03)),
+                                    child: Text(
+                                      "Projects",
+                                      style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: h(0.02)),
+                                    child: Text(
+                                      "Project Heading 1",
+                                      style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 8.0),
+                                    child: Text(
+                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: h(0.015)),
+                                    child: Text(
+                                      "Project Heading 2",
+                                      style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 8.0),
+                                    child: Text(
+                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      top: h(0.02),
+                                    ),
+                                    child: Text(
+                                      "Project Heading 3",
+                                      style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 8.0),
+                                    child: Text(
+                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: h(0.03)),
+                                    child: Text(
+                                      "Socials",
+                                      style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      top: h(0.02),
+                                    ),
+                                    child: Text(
+                                      "GitHub",
+                                      style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 8.0),
+                                    child: Text(
+                                      "@shashankdeepak",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      top: h(0.02),
+                                    ),
+                                    child: Text(
+                                      "LinkDin",
+                                      style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 8.0),
+                                    child: Text(
+                                      "@shashankdeepak",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
