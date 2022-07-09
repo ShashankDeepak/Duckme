@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -108,12 +110,20 @@ class _FormPageState extends State<FormPage> {
                         ),
                       ],
                     ),
-                    TextFormField(
-                      textAlignVertical: TextAlignVertical.top,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'bradjonson119@gmail.com',
-                        labelText: 'First name',
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("First Name"),
+                          TextFormField(
+                            // textAlignVertical: TextAlignVertical.top,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'bradjonson119@gmail.com',
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
