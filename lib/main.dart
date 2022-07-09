@@ -2,6 +2,7 @@
 
 import 'package:duckme/auth_pages/auth_page.dart';
 import 'package:duckme/auth_pages/sign_up.dart';
+import 'package:duckme/pages/form.dart';
 import 'package:duckme/pages/home.dart';
 import 'package:duckme/pages/profile_page.dart';
 import 'package:duckme/pages/title_page.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: Template1(),
+      home: FormPage(),
       //(FirebaseAuth.instance.currentUser == null ? titlePage() : Home()),
     );
   }
