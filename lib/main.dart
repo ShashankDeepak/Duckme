@@ -1,11 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-<<<<<<< HEAD
-import 'package:duckme/auth_pages/auth_page.dart';
-import 'package:duckme/auth_pages/sign_up.dart';
 import 'package:duckme/pages/form.dart';
-=======
->>>>>>> a38cf1cf00a4dbb988f7d29a90e1eed4d73cf54b
 import 'package:duckme/pages/home.dart';
 import 'package:duckme/pages/title_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
