@@ -76,19 +76,21 @@ class _FormPageState extends State<FormPage> {
             },
             body: TabBarView(
               children: [
-                Container(
-                  child: Column(
-                    children: [
-                      Stack(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: h(0.025),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
+                SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Stack(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: h(0.025),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: w(0.04),
+                                ),
+                                child: Container(
                                   width: w(0.9),
                                   height: h(0.3),
                                   decoration: BoxDecoration(
@@ -96,66 +98,250 @@ class _FormPageState extends State<FormPage> {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: h(0.26),
-                              left: w(0.82),
-                            ),
-                            child: Container(
-                              height: 60,
-                              width: 60,
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: HexColor("000000").withOpacity(0.25),
-                                    blurRadius: 10,
-                                    offset: Offset(0, 4),
-                                  ),
-                                ],
-                                borderRadius: BorderRadius.circular(10),
-                                gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    HexColor("EEEEEE"),
-                                    HexColor("FFFFFF")
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: h(0.26),
+                                left: w(0.82),
+                              ),
+                              child: Container(
+                                height: 60,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color:
+                                          HexColor("000000").withOpacity(0.25),
+                                      blurRadius: 10,
+                                      offset: Offset(0, 4),
+                                    ),
                                   ],
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [
+                                      HexColor("EEEEEE"),
+                                      HexColor("FFFFFF")
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: h(0.25),
-                              left: w(0.845),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: h(0.25),
+                                left: w(0.845),
+                              ),
+                              child: Container(
+                                height: h(0.1),
+                                width: w(0.1),
+                                child: SvgPicture.asset(
+                                    "assets/Icons/Plus icon.svg"),
+                              ),
                             ),
-                            child: Container(
-                              height: h(0.1),
-                              width: w(0.1),
-                              child: SvgPicture.asset(
-                                  "assets/Icons/Plus icon.svg"),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: h(0.26),
+                                left: w(0.82),
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: h(0.26),
-                              left: w(0.82),
-                            ),
-                          ),
-                        ],
-                      ),
-                      TextFormField(
-                        textAlignVertical: TextAlignVertical.top,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'bradjonson119@gmail.com',
-                          labelText: 'First name',
+                          ],
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: w(0.735),
+                            bottom: h(0.005),
+                          ),
+                          child: Text(
+                            "First name",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: HexColor("2E2E2E"),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText: 'Brad',
+                              hintStyle: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: w(0.735),
+                            bottom: h(0.005),
+                            top: h(0.01),
+                          ),
+                          child: Text(
+                            "Last name",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: HexColor("2E2E2E"),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText: 'Johnson',
+                              hintStyle: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: w(0.69),
+                            bottom: h(0.005),
+                            top: h(0.01),
+                          ),
+                          child: Text(
+                            "Date of birth",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: HexColor("2E2E2E"),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText: 'Johnson',
+                              hintStyle: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: w(0.735),
+                            bottom: h(0.005),
+                            top: h(0.01),
+                          ),
+                          child: Text(
+                            "Last name",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: HexColor("2E2E2E"),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText: 'Johnson',
+                              hintStyle: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: w(0.735),
+                            bottom: h(0.005),
+                            top: h(0.01),
+                          ),
+                          child: Text(
+                            "Last name",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: HexColor("2E2E2E"),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText: 'Johnson',
+                              hintStyle: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: w(0.735),
+                            bottom: h(0.005),
+                            top: h(0.01),
+                          ),
+                          child: Text(
+                            "Last name",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: HexColor("2E2E2E"),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText: 'Johnson',
+                              hintStyle: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Container(),
