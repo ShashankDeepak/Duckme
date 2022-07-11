@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../Class/user.dart';
+
 class FormPage extends StatefulWidget {
   FormPage({Key? key}) : super(key: key);
 
@@ -14,18 +16,17 @@ class FormPage extends StatefulWidget {
   State<FormPage> createState() => _FormPageState();
 }
 
+User user = User();
+
 class _FormPageState extends State<FormPage> {
   @override
   Widget build(BuildContext context) {
-    double heightOfDevice = MediaQuery.of(context).size.height;
-    double widthOfDevice = MediaQuery.of(context).size.width;
-
     double h(double height) {
-      return heightOfDevice * height;
+      return MediaQuery.of(context).size.height * height;
     }
 
     double w(double width) {
-      return widthOfDevice * width;
+      return MediaQuery.of(context).size.width * width;
     }
 
     return SafeArea(
@@ -91,11 +92,31 @@ class _FormPageState extends State<FormPage> {
                                   horizontal: w(0.04),
                                 ),
                                 child: Container(
-                                  width: w(0.9),
+                                  width: w(1),
                                   height: h(0.3),
-                                  decoration: BoxDecoration(
-                                    color: HexColor("F0F0F0"),
-                                    borderRadius: BorderRadius.circular(10),
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Card(
+                                      elevation: 5,
+                                      color: HexColor("F0F0F0"),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SvgPicture.asset("assets/User.svg"),
+                                          Text(
+                                            "Add your \n photo here",
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.lato(
+                                              fontWeight: FontWeight.w300,
+                                              color: HexColor("757575"),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -105,26 +126,42 @@ class _FormPageState extends State<FormPage> {
                                 top: h(0.26),
                                 left: w(0.82),
                               ),
-                              child: Container(
-                                height: 60,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color:
-                                          HexColor("000000").withOpacity(0.25),
-                                      blurRadius: 10,
-                                      offset: Offset(0, 4),
-                                    ),
-                                  ],
-                                  borderRadius: BorderRadius.circular(10),
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                    colors: [
-                                      HexColor("EEEEEE"),
-                                      HexColor("FFFFFF")
+                              child: InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  height: 60,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: HexColor("000000")
+                                            .withOpacity(0.25),
+                                        blurRadius: 10,
+                                        offset: Offset(0, 4),
+                                      ),
                                     ],
+                                    borderRadius: BorderRadius.circular(10),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        HexColor("EEEEEE"),
+                                        HexColor("FFFFFF")
+                                      ],
+                                    ),
+                                  ),
+                                  // child: IconButton(
+                                  //   alignment: Alignment.center,
+                                  //   iconSize: 50,
+                                  //   icon:
+                                  //       Icon(Icons.add, color: Colors.orange),
+                                  //   onPressed: () {},
+                                  // )
+                                  child: Padding(
+                                    padding: EdgeInsets.all(12),
+                                    child: SvgPicture.asset(
+                                      "assets/Icons/Plus icon.svg",
+                                    ),
                                   ),
                                 ),
                               ),
@@ -133,18 +170,6 @@ class _FormPageState extends State<FormPage> {
                               padding: EdgeInsets.only(
                                 top: h(0.25),
                                 left: w(0.845),
-                              ),
-                              child: Container(
-                                height: h(0.1),
-                                width: w(0.1),
-                                child: SvgPicture.asset(
-                                    "assets/Icons/Plus icon.svg"),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                top: h(0.26),
-                                left: w(0.82),
                               ),
                             ),
                           ],
@@ -168,6 +193,9 @@ class _FormPageState extends State<FormPage> {
                             horizontal: w(0.04),
                           ),
                           child: TextFormField(
+                            onChanged: (value) {
+                              user.firstname = value;
+                            },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -200,6 +228,9 @@ class _FormPageState extends State<FormPage> {
                             horizontal: w(0.04),
                           ),
                           child: TextFormField(
+                            onChanged: (value) {
+                              user.lastname = value;
+                            },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -233,10 +264,15 @@ class _FormPageState extends State<FormPage> {
                           ),
                           child: TextFormField(
                             decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                icon: Icon(Icons.calendar_month_outlined),
+                                color: Colors.orange,
+                                onPressed: () {},
+                              ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: 'Johnson',
+                              hintText: '24/02/2003',
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
