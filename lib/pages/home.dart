@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_build_context_synchronously
 
+import 'package:duckme/pages/form.dart';
 import 'package:duckme/pages/profile_page.dart';
 import 'package:duckme/pages/title_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -90,12 +91,19 @@ class _HomeState extends State<Home> {
             color: Colors.black,
             tabs: [
               GButton(
-                icon: CupertinoIcons.home,
-                text: 'Home',
-              ),
+                  icon: Icons.edit,
+                  text: 'Form',
+                  onPressed: () {
+                    Navigator.popUntil(context, (route) => route.isFirst);
+
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => FormPage()),
+                    );
+                  }),
               GButton(
                 icon: MdiIcons.fileDocumentEditOutline,
-                text: 'Likes',
+                text: 'Home',
               ),
               GButton(
                   icon: Icons.person,

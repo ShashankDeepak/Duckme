@@ -1,12 +1,16 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:flutter/gestures.dart';
+// ignore_for_file: prefer_const_constructors, curly_braces_in_flow_control_structures
+import 'package:duckme/pages/home.dart';
+import 'package:duckme/pages/profile_page.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../Class/user.dart';
 
 class FormPage extends StatefulWidget {
@@ -29,8 +33,57 @@ class _FormPageState extends State<FormPage> {
       return MediaQuery.of(context).size.width * width;
     }
 
+    DateTime dateTime;
+    TextEditingController date = TextEditingController();
+    final format = DateFormat("dd/MM/yyyy");
+
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+            child: GNav(
+              rippleColor: Colors.grey[300]!,
+              hoverColor: Colors.grey[100]!,
+              gap: 8,
+              activeColor: Colors.black,
+              iconSize: 24,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              duration: Duration(milliseconds: 400),
+              tabBackgroundColor: Colors.grey[100]!,
+              color: Colors.black,
+              tabs: [
+                GButton(
+                  icon: Icons.edit,
+                  text: 'Form',
+                ),
+                GButton(
+                    icon: MdiIcons.fileDocumentEditOutline,
+                    text: 'Home',
+                    onPressed: () {
+                      Navigator.popUntil(context, (route) => route.isFirst);
+
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home()),
+                      );
+                    }),
+                GButton(
+                    icon: Icons.person,
+                    text: 'Profile',
+                    onPressed: () {
+                      Navigator.popUntil(context, (route) => route.isFirst);
+
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProfilePage()),
+                      );
+                    }),
+              ],
+              selectedIndex: 0,
+            ),
+          ),
+        ),
         body: DefaultTabController(
           length: 5,
           child: NestedScrollView(
@@ -150,13 +203,6 @@ class _FormPageState extends State<FormPage> {
                                       ],
                                     ),
                                   ),
-                                  // child: IconButton(
-                                  //   alignment: Alignment.center,
-                                  //   iconSize: 50,
-                                  //   icon:
-                                  //       Icon(Icons.add, color: Colors.orange),
-                                  //   onPressed: () {},
-                                  // )
                                   child: Padding(
                                     padding: EdgeInsets.all(12),
                                     child: SvgPicture.asset(
@@ -200,7 +246,7 @@ class _FormPageState extends State<FormPage> {
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: 'Brad',
+                              hintText: user.firstname,
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -235,7 +281,7 @@ class _FormPageState extends State<FormPage> {
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: 'Johnson',
+                              hintText: user.lastname,
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -262,17 +308,59 @@ class _FormPageState extends State<FormPage> {
                           padding: EdgeInsets.symmetric(
                             horizontal: w(0.04),
                           ),
-                          child: TextFormField(
+                          child: DateTimeField(
                             decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                icon: Icon(Icons.calendar_month_outlined),
-                                color: Colors.orange,
-                                onPressed: () {},
-                              ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText: user.date),
+                            readOnly: true,
+                            onChanged: ((value) {
+                              if (value == null)
+                                user.date = user.date;
+                              else
+                                user.date =
+                                    DateFormat('dd/MM/yyyy').format(value);
+                            }),
+                            format: format,
+                            onShowPicker: (context, currentValue) async {
+                              return await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(1900),
+                                lastDate: DateTime.now(),
+                              );
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: w(0.66),
+                            bottom: h(0.005),
+                            top: h(0.01),
+                          ),
+                          child: Text(
+                            "Email Address",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: HexColor("2E2E2E"),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: TextFormField(
+                            onChanged: (value) {
+                              user.email = value;
+                            },
+                            decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: '24/02/2003',
+                              hintText: user.email,
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -287,7 +375,7 @@ class _FormPageState extends State<FormPage> {
                             top: h(0.01),
                           ),
                           child: Text(
-                            "Last name",
+                            "Address",
                             style: GoogleFonts.lato(
                               fontSize: 16,
                               fontWeight: FontWeight.w300,
@@ -300,11 +388,14 @@ class _FormPageState extends State<FormPage> {
                             horizontal: w(0.04),
                           ),
                           child: TextFormField(
+                            onChanged: (value) {
+                              user.address = value;
+                            },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: 'Johnson',
+                              hintText: user.address,
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -314,12 +405,12 @@ class _FormPageState extends State<FormPage> {
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                            right: w(0.735),
+                            right: w(0.785),
                             bottom: h(0.005),
                             top: h(0.01),
                           ),
                           child: Text(
-                            "Last name",
+                            "Phone",
                             style: GoogleFonts.lato(
                               fontSize: 16,
                               fontWeight: FontWeight.w300,
@@ -332,11 +423,14 @@ class _FormPageState extends State<FormPage> {
                             horizontal: w(0.04),
                           ),
                           child: TextFormField(
+                            onChanged: (value) {
+                              user.phone = value;
+                            },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: 'Johnson',
+                              hintText: user.phone,
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -344,38 +438,9 @@ class _FormPageState extends State<FormPage> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            right: w(0.735),
-                            bottom: h(0.005),
-                            top: h(0.01),
-                          ),
-                          child: Text(
-                            "Last name",
-                            style: GoogleFonts.lato(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: HexColor("2E2E2E"),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: w(0.04),
-                          ),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              hintText: 'Johnson',
-                              hintStyle: GoogleFonts.lato(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                          ),
-                        ),
+                        SizedBox(
+                          height: 20,
+                        )
                       ],
                     ),
                   ),

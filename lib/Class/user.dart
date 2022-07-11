@@ -1,11 +1,11 @@
 class User {
-  String uname = "";
-  String firstname = "";
-  String lastname = "";
-  String date = "";
-  String email = "";
-  String address = "";
-  int phone = 0123456789;
+  String uname = "brando";
+  String firstname = "Brad";
+  String lastname = "Jhonson";
+  String date = "02/12/2004";
+  String email = "brandjhonson19@gmail.com";
+  String address = "141, Sant Nagar, East Of Kailash, Bangalore, India";
+  String phone = "0123456789";
 
   String highschool = "";
   int highSchoolJoined = 0;
