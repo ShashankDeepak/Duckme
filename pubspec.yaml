@@ -45,6 +45,7 @@ dependencies:
   text_divider: ^1.0.0
   auto_size_text: ^3.0.0
   datetime_picker_formfield: ^2.0.0
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:

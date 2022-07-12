@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, curly_braces_in_flow_control_structures
+import 'dart:io';
+
 import 'package:duckme/pages/home.dart';
 import 'package:duckme/pages/profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,6 +26,31 @@ class FormPage extends StatefulWidget {
 User user = User();
 
 class _FormPageState extends State<FormPage> {
+  File? imageFile;
+  final imagePicker = ImagePicker();
+
+  Widget displayeImage() {
+    if (imageFile == null) {
+      return Image.asset(
+        "assets/personal.png",
+        fit: BoxFit.cover,
+      );
+    } else {
+      return Image.file(
+        imageFile!,
+        fit: BoxFit.cover,
+      );
+    }
+  }
+
+  void pickImage() async {
+    var image = await imagePicker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      imageFile = File(image!.path);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double h(double height) {
@@ -150,27 +178,16 @@ class _FormPageState extends State<FormPage> {
                                   width: w(1),
                                   height: h(0.3),
                                   child: InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      pickImage();
+                                    },
                                     child: Card(
                                       elevation: 5,
-                                      color: HexColor("F0F0F0"),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          SvgPicture.asset("assets/User.svg"),
-                                          Text(
-                                            "Add your \n photo here",
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.lato(
-                                              fontWeight: FontWeight.w300,
-                                              color: HexColor("757575"),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                      child: displayeImage(),
+                                      // Image.asset(
+                                      //   "assets/personal.png",
+                                      //   fit: BoxFit.cover,
+                                      // ),
                                     ),
                                   ),
                                 ),
@@ -182,7 +199,9 @@ class _FormPageState extends State<FormPage> {
                                 left: w(0.82),
                               ),
                               child: InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  pickImage();
+                                },
                                 child: Container(
                                   height: 60,
                                   width: 60,
