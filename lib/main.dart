@@ -27,8 +27,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: FormPage(),
-      //(FirebaseAuth.instance.currentUser == null ? titlePage() : Home()),
+      home:
+          // FormPage(),
+          (FirebaseAuth.instance.currentUser == null ? titlePage() : Home()),
     );
   }
 }

@@ -23,7 +23,7 @@ class FormPage extends StatefulWidget {
   State<FormPage> createState() => _FormPageState();
 }
 
-User user = User();
+UserCred user = UserCred();
 
 class _FormPageState extends State<FormPage> {
   File? imageFile;
