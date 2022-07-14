@@ -85,7 +85,7 @@ class FirebaseCRUD {
       "leetcode": userCred.leetcode,
       "codechef": userCred.codechef,
       "github": userCred.github,
-      "linkdin": userCred.linkdin,
+      "linkedin": userCred.linkedin,
     };
 
     db.collection("user").doc(uid).set(userCredCred);

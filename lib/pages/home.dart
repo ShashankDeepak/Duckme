@@ -91,7 +91,7 @@ class _HomeState extends State<Home> {
             color: Colors.black,
             tabs: [
               GButton(
-                  icon: Icons.edit,
+                  icon: MdiIcons.fileDocumentEditOutline,
                   text: 'Form',
                   onPressed: () {
                     Navigator.popUntil(context, (route) => route.isFirst);
@@ -102,12 +102,12 @@ class _HomeState extends State<Home> {
                     );
                   }),
               GButton(
-                icon: MdiIcons.fileDocumentEditOutline,
+                icon: MdiIcons.home,
                 text: 'Home',
               ),
               GButton(
                   icon: Icons.person,
-                  text: 'Search',
+                  text: 'Profile',
                   onPressed: () {
                     Navigator.popUntil(context, (route) => route.isFirst);
 

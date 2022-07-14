@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 import 'package:duckme/pages/home.dart';
+import 'package:duckme/pages/form.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,19 +50,26 @@ class _ProfilePageState extends State<ProfilePage> {
             color: Colors.black,
             tabs: [
               GButton(
-                icon: CupertinoIcons.home,
-                text: 'Home',
-              ),
-              GButton(
                   icon: MdiIcons.fileDocumentEditOutline,
-                  text: 'Likes',
+                  text: 'Form',
+                  onPressed: () {
+                    Navigator.popUntil(context, (route) => route.isFirst);
+
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => FormPage()),
+                    );
+                  }),
+              GButton(
+                  icon: MdiIcons.home,
+                  text: 'Home',
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Home()),
                     );
                   }),
-              GButton(icon: Icons.person, text: 'Search', onPressed: () {}),
+              GButton(icon: Icons.person, text: 'Profile', onPressed: () {}),
             ],
             selectedIndex: 2,
           ),
