@@ -996,6 +996,199 @@ class _FormPageState extends State<FormPage> {
                             style: GoogleFonts.lato(
                               fontSize: 20,
                               color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Project 1",
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Heading",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: TextFormField(
+                            onChanged: (value) {
+                              user.firstname = value;
+                            },
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText: 'Resume Maker',
+                              hintStyle: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Description",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: w(0.04),
+                            left: w(0.04),
+                            bottom: h(0.01),
+                          ),
+                          child: Container(
+                            height: maxLines * 30,
+                            child: TextFormField(
+                              maxLines: maxLines,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText:
+                                    'Write a few lines about your project',
+                                hintStyle: GoogleFonts.lato(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Project 2",
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Heading",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: TextFormField(
+                            onChanged: (value) {
+                              user.firstname = value;
+                            },
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText: 'Resume Maker',
+                              hintStyle: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Description",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: w(0.04),
+                            left: w(0.04),
+                            bottom: h(0.01),
+                          ),
+                          child: Container(
+                            height: maxLines * 30,
+                            child: TextFormField(
+                              maxLines: maxLines,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText:
+                                    'Write a few lines about your project',
+                                hintStyle: GoogleFonts.lato(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Project 3",
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              color: HexColor("2E2E2E"),
                               fontWeight: FontWeight.w300,
                             ),
                           ),
@@ -1082,6 +1275,385 @@ class _FormPageState extends State<FormPage> {
                             "Internships",
                             style: GoogleFonts.lato(
                               fontSize: 20,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Internship 1",
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Heading",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: TextFormField(
+                            onChanged: (value) {
+                              user.firstname = value;
+                            },
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText: 'Resume Maker',
+                              hintStyle: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: w(0.04),
+                                bottom: h(0.005),
+                                top: h(0.01),
+                              ),
+                              child: Text(
+                                "Year joined",
+                                style: GoogleFonts.lato(
+                                  fontSize: 16,
+                                  color: HexColor("2E2E2E"),
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: w(0.306),
+                                bottom: h(0.005),
+                                top: h(0.01),
+                              ),
+                              child: Text(
+                                "Year left",
+                                style: GoogleFonts.lato(
+                                  fontSize: 16,
+                                  color: HexColor("2E2E2E"),
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: Row(
+                            children: [
+                              Flexible(
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    right: w(0.02),
+                                  ),
+                                  child: Container(
+                                    margin: EdgeInsets.only(
+                                      right: w(0.001),
+                                    ),
+                                    child: TextFormField(
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        hintText: '2014',
+                                        hintStyle: GoogleFonts.lato(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    left: w(0.02),
+                                  ),
+                                  child: Container(
+                                    margin: EdgeInsets.only(
+                                      right: w(0.001),
+                                    ),
+                                    child: TextFormField(
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        hintText: '2015',
+                                        hintStyle: GoogleFonts.lato(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Description",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: w(0.04),
+                            left: w(0.04),
+                            bottom: h(0.01),
+                          ),
+                          child: Container(
+                            height: maxLines * 30,
+                            child: TextFormField(
+                              maxLines: maxLines,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText:
+                                    'Write a few lines about your project',
+                                hintStyle: GoogleFonts.lato(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Internship 2",
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Heading",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: TextFormField(
+                            onChanged: (value) {
+                              user.firstname = value;
+                            },
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText: 'Resume Maker',
+                              hintStyle: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: w(0.04),
+                                bottom: h(0.005),
+                                top: h(0.01),
+                              ),
+                              child: Text(
+                                "Year joined",
+                                style: GoogleFonts.lato(
+                                  fontSize: 16,
+                                  color: HexColor("2E2E2E"),
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: w(0.306),
+                                bottom: h(0.005),
+                                top: h(0.01),
+                              ),
+                              child: Text(
+                                "Year left",
+                                style: GoogleFonts.lato(
+                                  fontSize: 16,
+                                  color: HexColor("2E2E2E"),
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: w(0.04),
+                          ),
+                          child: Row(
+                            children: [
+                              Flexible(
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    right: w(0.02),
+                                  ),
+                                  child: Container(
+                                    margin: EdgeInsets.only(
+                                      right: w(0.001),
+                                    ),
+                                    child: TextFormField(
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        hintText: '2014',
+                                        hintStyle: GoogleFonts.lato(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    left: w(0.02),
+                                  ),
+                                  child: Container(
+                                    margin: EdgeInsets.only(
+                                      right: w(0.001),
+                                    ),
+                                    child: TextFormField(
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        hintText: '2015',
+                                        hintStyle: GoogleFonts.lato(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Description",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: w(0.04),
+                            left: w(0.04),
+                            bottom: h(0.01),
+                          ),
+                          child: Container(
+                            height: maxLines * 30,
+                            child: TextFormField(
+                              maxLines: maxLines,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                hintText:
+                                    'Write a few lines about your project',
+                                hintStyle: GoogleFonts.lato(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Internship 3",
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
                               color: HexColor("2E2E2E"),
                               fontWeight: FontWeight.w300,
                             ),
@@ -1263,6 +1835,21 @@ class _FormPageState extends State<FormPage> {
                             style: GoogleFonts.lato(
                               fontSize: 20,
                               color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Current company",
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              color: HexColor("2E2E2E"),
                               fontWeight: FontWeight.w300,
                             ),
                           ),
@@ -1274,7 +1861,7 @@ class _FormPageState extends State<FormPage> {
                             left: w(0.04),
                           ),
                           child: Text(
-                            "Current company name",
+                            "Company name",
                             style: GoogleFonts.lato(
                               fontSize: 16,
                               color: HexColor("2E2E2E"),
@@ -1309,7 +1896,7 @@ class _FormPageState extends State<FormPage> {
                             left: w(0.04),
                           ),
                           child: Text(
-                            "Current job role",
+                            "Job role",
                             style: GoogleFonts.lato(
                               fontSize: 16,
                               color: HexColor("2E2E2E"),
@@ -1337,43 +1924,25 @@ class _FormPageState extends State<FormPage> {
                             ),
                           ),
                         ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                left: w(0.04),
-                                bottom: h(0.005),
-                                top: h(0.01),
-                              ),
-                              child: Text(
-                                "Year joined",
-                                style: GoogleFonts.lato(
-                                  fontSize: 16,
-                                  color: HexColor("2E2E2E"),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: w(0.04),
+                            bottom: h(0.005),
+                            top: h(0.01),
+                          ),
+                          child: Text(
+                            "Year joined",
+                            style: GoogleFonts.lato(
+                              fontSize: 16,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                left: w(0.306),
-                                bottom: h(0.005),
-                                top: h(0.01),
-                              ),
-                              child: Text(
-                                "Year left",
-                                style: GoogleFonts.lato(
-                                  fontSize: 16,
-                                  color: HexColor("2E2E2E"),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              ),
-                            )
-                          ],
+                          ),
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: w(0.04),
+                          padding: EdgeInsets.only(
+                            left: w(0.04),
+                            right: w(0.52),
                           ),
                           child: Row(
                             children: [
@@ -1392,32 +1961,7 @@ class _FormPageState extends State<FormPage> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: '2017',
-                                        hintStyle: GoogleFonts.lato(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Flexible(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                    left: w(0.02),
-                                  ),
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                      right: w(0.001),
-                                    ),
-                                    child: TextFormField(
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                        ),
-                                        hintText: '2018',
+                                        hintText: '2020',
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -1476,7 +2020,22 @@ class _FormPageState extends State<FormPage> {
                             left: w(0.04),
                           ),
                           child: Text(
-                            "Second company name",
+                            "Second company",
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Company name",
                             style: GoogleFonts.lato(
                               fontSize: 16,
                               color: HexColor("2E2E2E"),
@@ -1678,7 +2237,22 @@ class _FormPageState extends State<FormPage> {
                             left: w(0.04),
                           ),
                           child: Text(
-                            "First company name",
+                            "First company",
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              color: HexColor("2E2E2E"),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: h(0.005),
+                            top: h(0.01),
+                            left: w(0.04),
+                          ),
+                          child: Text(
+                            "Company name",
                             style: GoogleFonts.lato(
                               fontSize: 16,
                               color: HexColor("2E2E2E"),
@@ -1741,20 +2315,39 @@ class _FormPageState extends State<FormPage> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: w(0.04),
-                            bottom: h(0.005),
-                            top: h(0.01),
-                          ),
-                          child: Text(
-                            "Year joined",
-                            style: GoogleFonts.lato(
-                              fontSize: 16,
-                              color: HexColor("2E2E2E"),
-                              fontWeight: FontWeight.w300,
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: w(0.04),
+                                bottom: h(0.005),
+                                top: h(0.01),
+                              ),
+                              child: Text(
+                                "Year joined",
+                                style: GoogleFonts.lato(
+                                  fontSize: 16,
+                                  color: HexColor("2E2E2E"),
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
                             ),
-                          ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: w(0.306),
+                                bottom: h(0.005),
+                                top: h(0.01),
+                              ),
+                              child: Text(
+                                "Year left",
+                                style: GoogleFonts.lato(
+                                  fontSize: 16,
+                                  color: HexColor("2E2E2E"),
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
@@ -1778,6 +2371,31 @@ class _FormPageState extends State<FormPage> {
                                               BorderRadius.circular(12),
                                         ),
                                         hintText: '2017',
+                                        hintStyle: GoogleFonts.lato(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    left: w(0.02),
+                                  ),
+                                  child: Container(
+                                    margin: EdgeInsets.only(
+                                      right: w(0.001),
+                                    ),
+                                    child: TextFormField(
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        hintText: '2018',
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
