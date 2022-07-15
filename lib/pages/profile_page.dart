@@ -1,8 +1,10 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously
 
 import 'dart:ui';
 import 'package:duckme/pages/home.dart';
 import 'package:duckme/pages/form.dart';
+import 'package:duckme/pages/title_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -284,7 +286,18 @@ class _ProfilePageState extends State<ProfilePage> {
             endIndent: w(0.1),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              Navigator.popUntil(context, (route) => route.isFirst);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => titlePage(),
+                ),
+              );
+
+              // print(uid);
+            },
             child: Padding(
               padding: EdgeInsets.only(
                 left: w(0.25),

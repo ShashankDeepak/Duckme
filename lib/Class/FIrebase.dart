@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:duckme/Class/user.dart';
 
 class FirebaseCRUD {
+  UserCred temp = UserCred();
+
   int random(min, max) {
     return min + Random().nextInt(max - min);
   }
@@ -89,5 +91,15 @@ class FirebaseCRUD {
     };
 
     db.collection("user").doc(uid).set(userCredCred);
+  }
+
+  void setData({required String uid, required Map<String, dynamic> map}) {
+    db.collection("user").doc(uid).set(map);
+  }
+
+  void getUser({required String uid}) {
+    UserCred user = UserCred();
+
+    // user.firstname =
   }
 }

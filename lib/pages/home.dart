@@ -54,27 +54,27 @@ class _HomeState extends State<Home> {
           "Duckmé",
           style: GoogleFonts.lilyScriptOne(color: Colors.white, fontSize: 30),
         ),
-        actions: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(primary: Colors.blue),
-              onPressed: () async {
-                await FirebaseAuth.instance.signOut();
+        // actions: [
+        //   ClipRRect(
+        //     borderRadius: BorderRadius.circular(100),
+        //     child: ElevatedButton(
+        //       style: ElevatedButton.styleFrom(primary: Colors.blue),
+        //       onPressed: () async {
+        //         await FirebaseAuth.instance.signOut();
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => titlePage(),
-                  ),
-                );
+        //         Navigator.push(
+        //           context,
+        //           MaterialPageRoute(
+        //             builder: (context) => titlePage(),
+        //           ),
+        //         );
 
-                print(uid);
-              },
-              child: Text("signout"),
-            ),
-          )
-        ],
+        //         print(uid);
+        //       },
+        //       child: Text("signout"),
+        //     ),
+        //   )
+        // ],
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
