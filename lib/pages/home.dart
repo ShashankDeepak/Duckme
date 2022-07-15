@@ -198,7 +198,7 @@ class _HomeState extends State<Home> {
                     Padding(
                       padding: EdgeInsets.only(top: 20.0),
                       child: Container(
-                        width: 390,
+                        width: w(1),
                         height: 620,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
