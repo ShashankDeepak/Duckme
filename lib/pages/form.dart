@@ -188,10 +188,6 @@ class _FormPageState extends State<FormPage> {
                                     child: Card(
                                       elevation: 5,
                                       child: displayeImage(),
-                                      // Image.asset(
-                                      //   "assets/personal.png",
-                                      //   fit: BoxFit.cover,
-                                      // ),
                                     ),
                                   ),
                                 ),
@@ -335,10 +331,11 @@ class _FormPageState extends State<FormPage> {
                           ),
                           child: DateTimeField(
                             decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                hintText: user.date),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              hintText: user.date,
+                            ),
                             readOnly: true,
                             onChanged: ((value) {
                               if (value == null)
@@ -448,6 +445,7 @@ class _FormPageState extends State<FormPage> {
                             horizontal: w(0.04),
                           ),
                           child: TextFormField(
+                            keyboardType: TextInputType.number,
                             onChanged: (value) {
                               user.phone = value;
                             },
