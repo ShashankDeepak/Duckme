@@ -76,7 +76,7 @@ class UserCred {
   double ratingSkill4 = 4.7;
   String skill5 = "UI/UX";
   double ratingSkill5 = 4.7;
-  String highlight = "";
+  String highlight = "Hackerrank 7 star || Leetcode 5 star";
   int leetcode = 4;
   int codechef = 5;
 
