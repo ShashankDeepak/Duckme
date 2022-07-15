@@ -88,7 +88,8 @@ class _HowToUseState extends State<HowToUse> {
                       Container(
                         width: w(0.1),
                         height: h(0.1),
-                        child: SvgPicture.asset("assets/Waving wing.svg"),
+                        child: SvgPicture.asset("assets/Waving wing.svg",
+                            color: Color.fromARGB(255, 242, 221, 37)),
                       ),
                     ],
                   ),

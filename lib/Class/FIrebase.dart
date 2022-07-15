@@ -100,9 +100,9 @@ class FirebaseCRUD {
   void getUser({required String uid}) {
     UserCred user = UserCred();
 
-    final docRef =
-        db.collection("user").doc(uid).get().then((DocumentSnapshot doc) {
-      final data = doc.data() as Map<String, dynamic>;
-    });
+    // final docRef =
+    //     db.collection("user").doc(uid).get().then((DocumentSnapshot doc) {
+    //   final data = doc.data() as Map<String, dynamic>;
+    // });
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:duckme/Templates/Template2/fresherTemplate2.dart';
 import 'package:duckme/pages/form.dart';
 import 'package:duckme/pages/home.dart';
 import 'package:duckme/pages/title_page.dart';
@@ -27,9 +28,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home:
-          // FormPage(),
-          (FirebaseAuth.instance.currentUser == null ? titlePage() : Home()),
+      home: fresherTemplate2(),
+      // (FirebaseAuth.instance.currentUser == null ? titlePage() : Home()),
     );
   }
 }
