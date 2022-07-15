@@ -3491,6 +3491,34 @@ class _FormPageState extends State<FormPage> {
                               ),
                             ),
                           ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              top: h(0.04),
+                              left: w(0.35),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(30),
+                              child: Container(
+                                width: w(0.3),
+                                height: h(0.06),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.orange),
+                                  onPressed: () {},
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "Save",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 22,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -3578,6 +3606,34 @@ class _FormPageState extends State<FormPage> {
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: w(0.65),
+                              top: h(0.04),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(30),
+                              child: Container(
+                                width: w(0.3),
+                                height: h(0.06),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.orange),
+                                  onPressed: () {},
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "Save",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 22,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
