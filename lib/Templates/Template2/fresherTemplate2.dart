@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:text_divider/text_divider.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class fresherTemplate2 extends StatefulWidget {
   fresherTemplate2({Key? key}) : super(key: key);
@@ -39,7 +40,7 @@ class _fresherTemplate2State extends State<fresherTemplate2> {
                             top: h(0.04),
                           ),
                           child: Text(
-                            "Shashank Deepak",
+                            "Rene Maury",
                             style: GoogleFonts.lato(
                               fontSize: 40,
                               color: Color.fromARGB(255, 1, 32, 58),
@@ -68,7 +69,7 @@ class _fresherTemplate2State extends State<fresherTemplate2> {
                         Padding(
                           padding: EdgeInsets.only(top: 35),
                           child: TextDivider.horizontal(
-                            thickness: 3,
+                            thickness: 0.5,
                             text: Text(
                               'Profile',
                               style: GoogleFonts.lato(
@@ -84,7 +85,7 @@ class _fresherTemplate2State extends State<fresherTemplate2> {
                             child: AutoSizeText(
                               textAlign: TextAlign.center,
                               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: 5),
                               maxLines: 4,
                             ),
                           ),
@@ -98,7 +99,40 @@ class _fresherTemplate2State extends State<fresherTemplate2> {
                         flex: 2,
                         child: Container(
                           height: h(1),
-                          color: Colors.green,
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Icon(
+                                    Icons.phone_android_outlined,
+                                  ),
+                                  AutoSizeText(
+                                    ": +91 0123456789",
+                                    style: GoogleFonts.openSans(
+                                      fontSize: 11,
+                                      color: HexColor("575757"),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Icon(Icons.email_outlined),
+                                  AutoSizeText(
+                                    ": examplemail@example.com",
+                                    style: GoogleFonts.openSans(
+                                      fontSize: 1,
+                                      color: HexColor("575757"),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Expanded(
