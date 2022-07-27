@@ -117,19 +117,30 @@ class _fresherTemplate2State extends State<fresherTemplate2> {
                                   ),
                                 ],
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Icon(Icons.email_outlined),
-                                  AutoSizeText(
-                                    ": examplemail@example.com",
-                                    style: GoogleFonts.openSans(
-                                      fontSize: 1,
-                                      color: HexColor("575757"),
-                                    ),
+                              Container(
+                                width: w(1),
+                                decoration: BoxDecoration(
+                                  border: Border.all(),
+                                ),
+                                child: IntrinsicWidth(
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.email_outlined,
+                                      ),
+                                      Flexible(
+                                        child: Text(
+                                          maxLines: 1,
+                                          ": examplemail@example.com",
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            color: HexColor("575757"),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ],
                           ),

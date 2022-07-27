@@ -140,10 +140,6 @@ class _FormPageState extends State<FormPage> {
                             padding: EdgeInsets.only(bottom: 18.0),
                             child: Text("Personal"),
                           ),
-                          // Text("Personal"),
-                          // Text("Personal"),
-                          // Text("Personal"),
-                          // Text("Personal"),
                           Padding(
                             padding: EdgeInsets.only(bottom: 18.0),
                             child: Text("Education"),
