@@ -1,7 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:duckme/Class/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class FirebaseCRUD {
   UserCred temp = UserCred();
@@ -94,15 +98,100 @@ class FirebaseCRUD {
   }
 
   void setData({required String uid, required Map<String, dynamic> map}) {
-    db.collection("user").doc(uid).set(map);
+    db.collection("user").doc(uid).update(map);
+    print("updated $uid");
   }
 
-  void getUser({required String uid}) {
-    UserCred user = UserCred();
+  UserCred getUser({required BuildContext context, required String uid}) {
+    UserCred userCred = UserCred();
+    final docRef = FirebaseFirestore.instance.collection("user").doc(uid);
 
-    // final docRef =
-    //     db.collection("user").doc(uid).get().then((DocumentSnapshot doc) {
-    //   final data = doc.data() as Map<String, dynamic>;
-    // });
+    docRef.get().then((DocumentSnapshot doc) {
+      final data = doc.data() as Map<String, dynamic>;
+      userCred.duckumber = data["duck"];
+      userCred.uname = data["userCredname"];
+      userCred.firstname = data["first"];
+      userCred.lastname = data["last"];
+      userCred.date = data["date"];
+      userCred.address = data["address"];
+      userCred.email = data["email"];
+      userCred.phone = data["phone"];
+      userCred.highschool = data["highschool"];
+      userCred.highSchoolJoined = data["highSchoolJoined"];
+      userCred.highSchoolLeft = data["highSchoolLeft"];
+      userCred.highSchoolmarks = data["highSchoolMarks"];
+      userCred.university = data["university"];
+      userCred.universityJoined = data["universityJoined"];
+      userCred.universityLeft = data["universityLeft"];
+      userCred.universityCGPA = data["universityCGPA"];
+      userCred.masters = data["masters"];
+      userCred.masterLeft = data["masterLeft"];
+      userCred.masterJoined = data["masterJoined"];
+      userCred.masterCGPA = data["masterCGPA"];
+      userCred.certificate1 = data["certificate1"];
+      userCred.certificate1Date = data["certificate1Date"];
+      userCred.certificate2 = data["certificate2"];
+
+      userCred.certificate2Date = data["certificate2Date"];
+      userCred.certificate3 = data["certificate3"];
+      userCred.certificate3Date = data["certificate3Date"];
+      userCred.project1 = data["project1"];
+      userCred.project1Detail = data["project1Detail"];
+      userCred.project2 = data["project2"];
+      userCred.project2Detail = data["project2Detail"];
+      userCred.project3 = data["project3"];
+      userCred.project3Detail = data["project3Detail"];
+      userCred.internship1 = data["internship1"];
+      userCred.internship1Detail = data["internship1Detail"];
+      userCred.internship1Joined = data["certificate2"];
+      userCred.internship1Left = data["internship1Left"];
+      userCred.internship2 = data["internship2"];
+      userCred.internship2Detail = data["internship2Detail"];
+
+      userCred.internship2Joined = data["internship2Joined"];
+      userCred.internship2Left = data["internship2Left"];
+      userCred.internship3 = data["internship3"];
+      userCred.internship3Detail = data["internship3Detail"];
+      userCred.internship3Left = data["internship3Left"];
+      userCred.currentCompany = data["currentCompany"];
+      userCred.currentCompanyDetail = data["currentCompanyDetail"];
+      userCred.currentCompanyJobRole = data["currentCompanyJobRole"];
+      userCred.currentCompanyJoined = data["currentCompanyJoined"];
+      userCred.currentCompanyLeft = data["currentCompanyLeft"];
+      userCred.previousCompany1 = data["previousCompany1"];
+      userCred.previousCompany1Detail = data["previousCompany1Detail"];
+
+      userCred.previousCompany1Joined = data["previousCompany1Joined"];
+      userCred.previousCompany1Left = data["previousCompany1Left"];
+      userCred.previousCompany2 = data["previousCompany2"];
+      userCred.previousCompany2Detail = data["previousCompany2Detail"];
+      userCred.previousCompany2Joined = data["previousCompany2Joined"];
+      userCred.previousCompany2Left = data["previousCompany2Left"];
+      userCred.skill1 = data["skill1"];
+      userCred.ratingSkill1 = data["ratingSkill1"];
+      userCred.skill2 = data["skill2"];
+      userCred.ratingSkill2 = data["ratingSkill2"];
+      userCred.skill3 = data["skill3"];
+      userCred.ratingSkill3 = data["ratingSkill3"];
+      userCred.skill4 = data["skill4"];
+      userCred.ratingSkill4 = data["ratingSkill4"];
+      userCred.skill5 = data["skill5"];
+      userCred.ratingSkill5 = data["ratingSkill5"];
+      userCred.highlight = data["highlight"];
+      userCred.leetcode = data["leetcode"];
+      userCred.codechef = data["codechef"];
+      userCred.github = data["github"];
+      userCred.linkedin = data["linkedin"];
+
+      print("Success");
+    }, onError: (e) {
+      final snackBar = SnackBar(
+        content: Text('Something is wrong, please check your internet'),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      print("Error getting document: $e");
+    });
+
+    return userCred;
   }
 }

@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, curly_braces_in_flow_control_structures
+import 'dart:async';
 import 'dart:io';
 
+import 'package:duckme/Class/FIrebase.dart';
 import 'package:duckme/pages/home.dart';
 import 'package:duckme/pages/profile_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:image_picker/image_picker.dart';
@@ -22,8 +25,6 @@ class FormPage extends StatefulWidget {
   @override
   State<FormPage> createState() => _FormPageState();
 }
-
-UserCred user = UserCred();
 
 class _FormPageState extends State<FormPage> {
   File? imageFile;
@@ -51,6 +52,29 @@ class _FormPageState extends State<FormPage> {
     });
   }
 
+  // Future<void> update(BuildContext context) async {
+  //   FirebaseCRUD fire = FirebaseCRUD();
+  // }
+
+  // Future<void>  getUser(BuildContext context) {
+
+  // }
+  UserCred userCred = UserCred();
+  FirebaseCRUD fire = FirebaseCRUD();
+  @override
+  void initState() {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+
+    userCred = fire.getUser(context: context, uid: uid);
+
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   // do something
+    //   setState(() {});
+    //   print("Build");
+    // });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double h(double height) {
@@ -61,15 +85,23 @@ class _FormPageState extends State<FormPage> {
       return MediaQuery.of(context).size.width * width;
     }
 
-    final maxLines = 5;
+    // final uid = FirebaseAuth.instance.currentUser!.uid;
+    // userCred = fire.getUser(context: context, uid: uid);
 
+    final maxLines = 5;
     DateTime dateTime;
+
     TextEditingController date = TextEditingController();
     final format = DateFormat("dd/MM/yyyy");
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => {
+          setState(() {}),
+        });
 
     return SafeArea(
       child: GestureDetector(
         onTap: () {
+          // getUser(context);
           FocusManager.instance.primaryFocus?.unfocus();
         },
         child: Scaffold(
@@ -271,13 +303,14 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.firstname = value;
+                                userCred.firstname = value;
+                                // final map = <String, dynamic>{"first":user.firstname};
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.firstname,
+                                hintText: userCred.firstname,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -306,13 +339,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.lastname = value;
+                                userCred.lastname = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.lastname,
+                                hintText: userCred.lastname,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -344,14 +377,14 @@ class _FormPageState extends State<FormPage> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.date,
+                                hintText: userCred.date,
                               ),
                               readOnly: true,
                               onChanged: ((value) {
                                 if (value == null)
-                                  user.date = user.date;
+                                  userCred.date = userCred.date;
                                 else
-                                  user.date =
+                                  userCred.date =
                                       DateFormat('dd/MM/yyyy').format(value);
                               }),
                               format: format,
@@ -386,13 +419,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.email = value;
+                                userCred.email = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.email,
+                                hintText: userCred.email,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -421,13 +454,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.address = value;
+                                userCred.address = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.address,
+                                hintText: userCred.address,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -457,13 +490,13 @@ class _FormPageState extends State<FormPage> {
                             child: TextFormField(
                               keyboardType: TextInputType.number,
                               onChanged: (value) {
-                                user.phone = value;
+                                userCred.phone = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.phone,
+                                hintText: userCred.phone,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -485,7 +518,21 @@ class _FormPageState extends State<FormPage> {
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       primary: Colors.orange),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    // print(userCred.firstname);
+                                    fire.setData(
+                                        uid: uid,
+                                        map: <String, dynamic>{
+                                          "first": userCred.firstname,
+                                          "last": userCred.lastname,
+                                          "date": userCred.date,
+                                          "email": userCred.email,
+                                          "address": userCred.address,
+                                          "phone": userCred.phone,
+                                        });
+                                    // update(context);
+                                    setState(() {});
+                                  },
                                   child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
@@ -543,13 +590,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.highschool = value;
+                                userCred.highschool = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.highschool,
+                                hintText: userCred.highschool,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -605,7 +652,7 @@ class _FormPageState extends State<FormPage> {
                                     child: TextFormField(
                                       keyboardType: TextInputType.number,
                                       onChanged: (value) {
-                                        user.highSchoolJoined =
+                                        userCred.highSchoolJoined =
                                             int.parse(value);
                                       },
                                       decoration: InputDecoration(
@@ -613,8 +660,8 @@ class _FormPageState extends State<FormPage> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText:
-                                            user.highSchoolJoined.toString(),
+                                        hintText: userCred.highSchoolJoined
+                                            .toString(),
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -636,7 +683,8 @@ class _FormPageState extends State<FormPage> {
                                     child: TextFormField(
                                       keyboardType: TextInputType.number,
                                       onChanged: (value) {
-                                        user.highSchoolLeft = int.parse(value);
+                                        userCred.highSchoolLeft =
+                                            int.parse(value);
                                       },
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(
@@ -644,7 +692,7 @@ class _FormPageState extends State<FormPage> {
                                               BorderRadius.circular(12),
                                         ),
                                         hintText:
-                                            user.highSchoolLeft.toString(),
+                                            userCred.highSchoolLeft.toString(),
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -682,13 +730,14 @@ class _FormPageState extends State<FormPage> {
                               child: TextFormField(
                                 keyboardType: TextInputType.number,
                                 onChanged: (value) {
-                                  user.highSchoolmarks = double.parse(value);
+                                  userCred.highSchoolmarks =
+                                      double.parse(value);
                                 },
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.highSchoolmarks.toString(),
+                                  hintText: userCred.highSchoolmarks.toString(),
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -731,13 +780,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.university = (value);
+                                userCred.university = (value);
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.university,
+                                hintText: userCred.university,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -792,7 +841,7 @@ class _FormPageState extends State<FormPage> {
                                     ),
                                     child: TextFormField(
                                       onChanged: (value) {
-                                        user.universityJoined =
+                                        userCred.universityJoined =
                                             int.parse(value);
                                       },
                                       keyboardType: TextInputType.number,
@@ -801,8 +850,8 @@ class _FormPageState extends State<FormPage> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText:
-                                            user.universityJoined.toString(),
+                                        hintText: userCred.universityJoined
+                                            .toString(),
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -824,7 +873,8 @@ class _FormPageState extends State<FormPage> {
                                     child: TextFormField(
                                       keyboardType: TextInputType.number,
                                       onChanged: (value) {
-                                        user.universityLeft = int.parse(value);
+                                        userCred.universityLeft =
+                                            int.parse(value);
                                       },
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(
@@ -832,7 +882,7 @@ class _FormPageState extends State<FormPage> {
                                               BorderRadius.circular(12),
                                         ),
                                         hintText:
-                                            user.universityLeft.toString(),
+                                            userCred.universityLeft.toString(),
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -869,14 +919,14 @@ class _FormPageState extends State<FormPage> {
                               ),
                               child: TextFormField(
                                 onChanged: (value) {
-                                  user.universityCGPA = double.parse(value);
+                                  userCred.universityCGPA = double.parse(value);
                                 },
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.universityCGPA.toString(),
+                                  hintText: userCred.universityCGPA.toString(),
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -919,13 +969,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.masters = (value);
+                                userCred.masters = (value);
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.masters,
+                                hintText: userCred.masters,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -981,14 +1031,16 @@ class _FormPageState extends State<FormPage> {
                                     child: TextFormField(
                                       keyboardType: TextInputType.number,
                                       onChanged: (value) {
-                                        user.masterJoined = int.parse(value);
+                                        userCred.masterJoined =
+                                            int.parse(value);
                                       },
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: user.masterJoined.toString(),
+                                        hintText:
+                                            userCred.masterJoined.toString(),
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -1009,7 +1061,7 @@ class _FormPageState extends State<FormPage> {
                                     ),
                                     child: TextFormField(
                                       onChanged: (value) {
-                                        user.masterLeft = int.parse(value);
+                                        userCred.masterLeft = int.parse(value);
                                       },
                                       keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
@@ -1017,7 +1069,8 @@ class _FormPageState extends State<FormPage> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: user.masterLeft.toString(),
+                                        hintText:
+                                            userCred.masterLeft.toString(),
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -1056,14 +1109,14 @@ class _FormPageState extends State<FormPage> {
                               ),
                               child: TextFormField(
                                 onChanged: (value) {
-                                  user.masterCGPA = double.parse(value);
+                                  userCred.masterCGPA = double.parse(value);
                                 },
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.masterCGPA.toString(),
+                                  hintText: userCred.masterCGPA.toString(),
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -1086,7 +1139,33 @@ class _FormPageState extends State<FormPage> {
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       primary: Colors.orange),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    setState(() {
+                                      fire.setData(
+                                          uid: uid,
+                                          map: <String, dynamic>{
+                                            "highschool": userCred.highschool,
+                                            "highSchoolJoined":
+                                                userCred.highSchoolJoined,
+                                            "highSchoolLeft":
+                                                userCred.highSchoolLeft,
+                                            "highSchoolMarks":
+                                                userCred.highSchoolmarks,
+                                            "university": userCred.university,
+                                            "universityJoined":
+                                                userCred.universityJoined,
+                                            "universityLeft":
+                                                userCred.universityLeft,
+                                            "universityCGPA":
+                                                userCred.universityCGPA,
+                                            "masters": userCred.masters,
+                                            "masterJoined":
+                                                userCred.masterJoined,
+                                            "masterLeft": userCred.masterLeft,
+                                            "masterCGPA": userCred.masterCGPA,
+                                          });
+                                    });
+                                  },
                                   child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
@@ -1160,13 +1239,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.project1 = value;
+                                userCred.project1 = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.project1.toString(),
+                                hintText: userCred.project1.toString(),
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -1199,14 +1278,14 @@ class _FormPageState extends State<FormPage> {
                               height: maxLines * 30,
                               child: TextFormField(
                                 onChanged: (value) {
-                                  user.project1Detail = (value);
+                                  userCred.project1Detail = (value);
                                 },
                                 maxLines: maxLines,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.project1Detail,
+                                  hintText: userCred.project1Detail,
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -1251,13 +1330,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.project2 = value;
+                                userCred.project2 = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.project2,
+                                hintText: userCred.project2,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -1290,14 +1369,14 @@ class _FormPageState extends State<FormPage> {
                               height: maxLines * 30,
                               child: TextFormField(
                                 onChanged: (value) {
-                                  user.project2Detail = (value);
+                                  userCred.project2Detail = (value);
                                 },
                                 maxLines: maxLines,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.project2Detail,
+                                  hintText: userCred.project2Detail,
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -1342,13 +1421,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.project3 = value;
+                                userCred.project3 = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.project3,
+                                hintText: userCred.project3,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -1381,14 +1460,14 @@ class _FormPageState extends State<FormPage> {
                               height: maxLines * 30,
                               child: TextFormField(
                                 onChanged: (value) {
-                                  user.project3Detail = value;
+                                  userCred.project3Detail = value;
                                 },
                                 maxLines: maxLines,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.project3Detail,
+                                  hintText: userCred.project3Detail,
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -1485,13 +1564,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.internship1 = value;
+                                userCred.internship1 = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.internship1,
+                                hintText: userCred.internship1,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -1551,7 +1630,7 @@ class _FormPageState extends State<FormPage> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (value) {
-                                          user.internship1Joined =
+                                          userCred.internship1Joined =
                                               int.parse(value);
                                         },
                                         decoration: InputDecoration(
@@ -1559,8 +1638,8 @@ class _FormPageState extends State<FormPage> {
                                             borderRadius:
                                                 BorderRadius.circular(12),
                                           ),
-                                          hintText:
-                                              user.internship1Joined.toString(),
+                                          hintText: userCred.internship1Joined
+                                              .toString(),
                                           hintStyle: GoogleFonts.lato(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
@@ -1582,7 +1661,7 @@ class _FormPageState extends State<FormPage> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (value) {
-                                          user.internship1Left =
+                                          userCred.internship1Left =
                                               int.parse(value);
                                         },
                                         decoration: InputDecoration(
@@ -1590,8 +1669,8 @@ class _FormPageState extends State<FormPage> {
                                             borderRadius:
                                                 BorderRadius.circular(12),
                                           ),
-                                          hintText:
-                                              user.internship1Left.toString(),
+                                          hintText: userCred.internship1Left
+                                              .toString(),
                                           hintStyle: GoogleFonts.lato(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
@@ -1629,14 +1708,14 @@ class _FormPageState extends State<FormPage> {
                               height: maxLines * 30,
                               child: TextFormField(
                                 onChanged: (value) {
-                                  user.internship1Detail = value;
+                                  userCred.internship1Detail = value;
                                 },
                                 maxLines: maxLines,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.internship1Detail,
+                                  hintText: userCred.internship1Detail,
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -1681,13 +1760,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.internship2 = value;
+                                userCred.internship2 = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.internship2,
+                                hintText: userCred.internship2,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -1747,7 +1826,7 @@ class _FormPageState extends State<FormPage> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (value) {
-                                          user.internship2Joined =
+                                          userCred.internship2Joined =
                                               int.parse(value);
                                         },
                                         decoration: InputDecoration(
@@ -1755,8 +1834,8 @@ class _FormPageState extends State<FormPage> {
                                             borderRadius:
                                                 BorderRadius.circular(12),
                                           ),
-                                          hintText:
-                                              user.internship2Joined.toString(),
+                                          hintText: userCred.internship2Joined
+                                              .toString(),
                                           hintStyle: GoogleFonts.lato(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
@@ -1778,7 +1857,7 @@ class _FormPageState extends State<FormPage> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (value) {
-                                          user.internship2Left =
+                                          userCred.internship2Left =
                                               int.parse(value);
                                         },
                                         decoration: InputDecoration(
@@ -1786,8 +1865,8 @@ class _FormPageState extends State<FormPage> {
                                             borderRadius:
                                                 BorderRadius.circular(12),
                                           ),
-                                          hintText:
-                                              user.internship2Left.toString(),
+                                          hintText: userCred.internship2Left
+                                              .toString(),
                                           hintStyle: GoogleFonts.lato(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
@@ -1825,14 +1904,14 @@ class _FormPageState extends State<FormPage> {
                               height: maxLines * 30,
                               child: TextFormField(
                                 onChanged: (value) {
-                                  user.internship2Detail = value;
+                                  userCred.internship2Detail = value;
                                 },
                                 maxLines: maxLines,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.internship2Detail,
+                                  hintText: userCred.internship2Detail,
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -1877,13 +1956,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.internship3 = value;
+                                userCred.internship3 = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.internship3,
+                                hintText: userCred.internship3,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -1943,7 +2022,7 @@ class _FormPageState extends State<FormPage> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (value) {
-                                          user.internship3Joined =
+                                          userCred.internship3Joined =
                                               int.parse(value);
                                         },
                                         decoration: InputDecoration(
@@ -1951,8 +2030,8 @@ class _FormPageState extends State<FormPage> {
                                             borderRadius:
                                                 BorderRadius.circular(12),
                                           ),
-                                          hintText:
-                                              user.internship3Joined.toString(),
+                                          hintText: userCred.internship3Joined
+                                              .toString(),
                                           hintStyle: GoogleFonts.lato(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
@@ -1974,7 +2053,7 @@ class _FormPageState extends State<FormPage> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (value) {
-                                          user.internship3Left =
+                                          userCred.internship3Left =
                                               int.parse(value);
                                         },
                                         decoration: InputDecoration(
@@ -1982,8 +2061,8 @@ class _FormPageState extends State<FormPage> {
                                             borderRadius:
                                                 BorderRadius.circular(12),
                                           ),
-                                          hintText:
-                                              user.internship3Left.toString(),
+                                          hintText: userCred.internship3Left
+                                              .toString(),
                                           hintStyle: GoogleFonts.lato(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
@@ -2021,14 +2100,14 @@ class _FormPageState extends State<FormPage> {
                               height: maxLines * 30,
                               child: TextFormField(
                                 onChanged: (value) {
-                                  user.internship3Detail = value;
+                                  userCred.internship3Detail = value;
                                 },
                                 maxLines: maxLines,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.internship3Detail,
+                                  hintText: userCred.internship3Detail,
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -2125,13 +2204,13 @@ class _FormPageState extends State<FormPage> {
                           ),
                           child: TextFormField(
                             onChanged: (value) {
-                              user.currentCompany = value;
+                              userCred.currentCompany = value;
                             },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: user.currentCompany,
+                              hintText: userCred.currentCompany,
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -2160,13 +2239,13 @@ class _FormPageState extends State<FormPage> {
                           ),
                           child: TextFormField(
                             onChanged: (value) {
-                              user.currentCompanyJobRole = value;
+                              userCred.currentCompanyJobRole = value;
                             },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: user.currentCompanyJobRole,
+                              hintText: userCred.currentCompanyJobRole,
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -2205,14 +2284,15 @@ class _FormPageState extends State<FormPage> {
                               child: TextFormField(
                                 keyboardType: TextInputType.number,
                                 onChanged: (value) {
-                                  user.currentCompanyJoined = int.parse(value);
+                                  userCred.currentCompanyJoined =
+                                      int.parse(value);
                                 },
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   hintText:
-                                      user.currentCompanyJoined.toString(),
+                                      userCred.currentCompanyJoined.toString(),
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -2247,14 +2327,14 @@ class _FormPageState extends State<FormPage> {
                             height: maxLines * 30,
                             child: TextFormField(
                               onChanged: (value) {
-                                user.currentCompanyDetail = value;
+                                userCred.currentCompanyDetail = value;
                               },
                               maxLines: maxLines,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.currentCompanyDetail,
+                                hintText: userCred.currentCompanyDetail,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -2299,13 +2379,13 @@ class _FormPageState extends State<FormPage> {
                           ),
                           child: TextFormField(
                             onChanged: (value) {
-                              user.previousCompany2 = value;
+                              userCred.previousCompany2 = value;
                             },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: user.previousCompany2,
+                              hintText: userCred.previousCompany2,
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -2334,13 +2414,13 @@ class _FormPageState extends State<FormPage> {
                           ),
                           child: TextFormField(
                             onChanged: (value) {
-                              user.previousCompany2JobRole = value;
+                              userCred.previousCompany2JobRole = value;
                             },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: user.previousCompany2JobRole,
+                              hintText: userCred.previousCompany2JobRole,
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -2400,7 +2480,7 @@ class _FormPageState extends State<FormPage> {
                                     child: TextFormField(
                                       keyboardType: TextInputType.number,
                                       onChanged: (value) {
-                                        user.previousCompany2Joined =
+                                        userCred.previousCompany2Joined =
                                             int.parse(value);
                                       },
                                       decoration: InputDecoration(
@@ -2408,7 +2488,8 @@ class _FormPageState extends State<FormPage> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: user.previousCompany2Joined
+                                        hintText: userCred
+                                            .previousCompany2Joined
                                             .toString(),
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
@@ -2431,7 +2512,7 @@ class _FormPageState extends State<FormPage> {
                                     child: TextFormField(
                                       keyboardType: TextInputType.number,
                                       onChanged: (value) {
-                                        user.previousCompany2Left =
+                                        userCred.previousCompany2Left =
                                             int.parse(value);
                                       },
                                       decoration: InputDecoration(
@@ -2439,7 +2520,7 @@ class _FormPageState extends State<FormPage> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: user.previousCompany2Left
+                                        hintText: userCred.previousCompany2Left
                                             .toString(),
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
@@ -2478,14 +2559,14 @@ class _FormPageState extends State<FormPage> {
                             height: maxLines * 30,
                             child: TextFormField(
                               onChanged: (value) {
-                                user.previousCompany2Detail = value;
+                                userCred.previousCompany2Detail = value;
                               },
                               maxLines: maxLines,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.previousCompany2Detail,
+                                hintText: userCred.previousCompany2Detail,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -2530,13 +2611,13 @@ class _FormPageState extends State<FormPage> {
                           ),
                           child: TextFormField(
                             onChanged: (value) {
-                              user.previousCompany1 = value;
+                              userCred.previousCompany1 = value;
                             },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: user.previousCompany1,
+                              hintText: userCred.previousCompany1,
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -2565,13 +2646,13 @@ class _FormPageState extends State<FormPage> {
                           ),
                           child: TextFormField(
                             onChanged: (value) {
-                              user.previousCompany1JobRole = value;
+                              userCred.previousCompany1JobRole = value;
                             },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              hintText: user.previousCompany1JobRole,
+                              hintText: userCred.previousCompany1JobRole,
                               hintStyle: GoogleFonts.lato(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
@@ -2631,7 +2712,7 @@ class _FormPageState extends State<FormPage> {
                                     child: TextFormField(
                                       keyboardType: TextInputType.number,
                                       onChanged: (value) {
-                                        user.previousCompany1Joined =
+                                        userCred.previousCompany1Joined =
                                             int.parse(value);
                                       },
                                       decoration: InputDecoration(
@@ -2639,7 +2720,8 @@ class _FormPageState extends State<FormPage> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: user.previousCompany1Joined
+                                        hintText: userCred
+                                            .previousCompany1Joined
                                             .toString(),
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
@@ -2662,7 +2744,7 @@ class _FormPageState extends State<FormPage> {
                                     child: TextFormField(
                                       keyboardType: TextInputType.number,
                                       onChanged: (value) {
-                                        user.previousCompany1Left =
+                                        userCred.previousCompany1Left =
                                             int.parse(value);
                                       },
                                       decoration: InputDecoration(
@@ -2670,7 +2752,7 @@ class _FormPageState extends State<FormPage> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: user.previousCompany1Left
+                                        hintText: userCred.previousCompany1Left
                                             .toString(),
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
@@ -2709,14 +2791,14 @@ class _FormPageState extends State<FormPage> {
                             height: maxLines * 30,
                             child: TextFormField(
                               onChanged: (value) {
-                                user.previousCompany1Detail = value;
+                                userCred.previousCompany1Detail = value;
                               },
                               maxLines: maxLines,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.previousCompany1Detail,
+                                hintText: userCred.previousCompany1Detail,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -2825,14 +2907,14 @@ class _FormPageState extends State<FormPage> {
                                   child: Container(
                                     child: TextFormField(
                                       onChanged: ((value) {
-                                        user.skill1 = value;
+                                        userCred.skill1 = value;
                                       }),
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: user.skill1,
+                                        hintText: userCred.skill1,
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -2850,7 +2932,7 @@ class _FormPageState extends State<FormPage> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (value) {
-                                          user.ratingSkill1 =
+                                          userCred.ratingSkill1 =
                                               double.parse(value);
                                         },
                                         decoration: InputDecoration(
@@ -2859,7 +2941,7 @@ class _FormPageState extends State<FormPage> {
                                                 BorderRadius.circular(12),
                                           ),
                                           hintText:
-                                              user.ratingSkill1.toString(),
+                                              userCred.ratingSkill1.toString(),
                                           hintStyle: GoogleFonts.lato(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
@@ -2916,14 +2998,14 @@ class _FormPageState extends State<FormPage> {
                                   child: Container(
                                     child: TextFormField(
                                       onChanged: ((value) {
-                                        user.skill2 = value;
+                                        userCred.skill2 = value;
                                       }),
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: user.skill2,
+                                        hintText: userCred.skill2,
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -2941,7 +3023,7 @@ class _FormPageState extends State<FormPage> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (value) {
-                                          user.ratingSkill2 =
+                                          userCred.ratingSkill2 =
                                               double.parse(value);
                                         },
                                         decoration: InputDecoration(
@@ -2950,7 +3032,7 @@ class _FormPageState extends State<FormPage> {
                                                 BorderRadius.circular(12),
                                           ),
                                           hintText:
-                                              user.ratingSkill2.toString(),
+                                              userCred.ratingSkill2.toString(),
                                           hintStyle: GoogleFonts.lato(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
@@ -3007,14 +3089,14 @@ class _FormPageState extends State<FormPage> {
                                   child: Container(
                                     child: TextFormField(
                                       onChanged: ((value) {
-                                        user.skill3 = value;
+                                        userCred.skill3 = value;
                                       }),
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: user.skill3,
+                                        hintText: userCred.skill3,
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -3032,7 +3114,7 @@ class _FormPageState extends State<FormPage> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (value) {
-                                          user.ratingSkill3 =
+                                          userCred.ratingSkill3 =
                                               double.parse(value);
                                         },
                                         decoration: InputDecoration(
@@ -3041,7 +3123,7 @@ class _FormPageState extends State<FormPage> {
                                                 BorderRadius.circular(12),
                                           ),
                                           hintText:
-                                              user.ratingSkill3.toString(),
+                                              userCred.ratingSkill3.toString(),
                                           hintStyle: GoogleFonts.lato(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
@@ -3098,14 +3180,14 @@ class _FormPageState extends State<FormPage> {
                                   child: Container(
                                     child: TextFormField(
                                       onChanged: ((value) {
-                                        user.skill4 = value;
+                                        userCred.skill4 = value;
                                       }),
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: user.skill4,
+                                        hintText: userCred.skill4,
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -3123,7 +3205,7 @@ class _FormPageState extends State<FormPage> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (value) {
-                                          user.ratingSkill4 =
+                                          userCred.ratingSkill4 =
                                               double.parse(value);
                                         },
                                         decoration: InputDecoration(
@@ -3132,7 +3214,7 @@ class _FormPageState extends State<FormPage> {
                                                 BorderRadius.circular(12),
                                           ),
                                           hintText:
-                                              user.ratingSkill4.toString(),
+                                              userCred.ratingSkill4.toString(),
                                           hintStyle: GoogleFonts.lato(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
@@ -3189,14 +3271,14 @@ class _FormPageState extends State<FormPage> {
                                   child: Container(
                                     child: TextFormField(
                                       onChanged: ((value) {
-                                        user.skill5 = value;
+                                        userCred.skill5 = value;
                                       }),
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
-                                        hintText: user.skill5,
+                                        hintText: userCred.skill5,
                                         hintStyle: GoogleFonts.lato(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w300,
@@ -3214,7 +3296,7 @@ class _FormPageState extends State<FormPage> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         onChanged: (value) {
-                                          user.ratingSkill5 =
+                                          userCred.ratingSkill5 =
                                               double.parse(value);
                                         },
                                         decoration: InputDecoration(
@@ -3223,7 +3305,7 @@ class _FormPageState extends State<FormPage> {
                                                 BorderRadius.circular(12),
                                           ),
                                           hintText:
-                                              user.ratingSkill5.toString(),
+                                              userCred.ratingSkill5.toString(),
                                           hintStyle: GoogleFonts.lato(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
@@ -3260,13 +3342,13 @@ class _FormPageState extends State<FormPage> {
                               child: TextFormField(
                                 keyboardType: TextInputType.number,
                                 onChanged: ((value) {
-                                  user.highlight = (value);
+                                  userCred.highlight = (value);
                                 }),
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.highlight,
+                                  hintText: userCred.highlight,
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -3304,13 +3386,13 @@ class _FormPageState extends State<FormPage> {
                               child: TextFormField(
                                 keyboardType: TextInputType.number,
                                 onChanged: ((value) {
-                                  user.leetcode = int.parse(value);
+                                  userCred.leetcode = int.parse(value);
                                 }),
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.leetcode.toString(),
+                                  hintText: userCred.leetcode.toString(),
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -3347,14 +3429,14 @@ class _FormPageState extends State<FormPage> {
                               width: w(0.4),
                               child: TextFormField(
                                 onChanged: ((value) {
-                                  user.codechef = int.parse(value);
+                                  userCred.codechef = int.parse(value);
                                 }),
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: user.codechef.toString(),
+                                  hintText: userCred.codechef.toString(),
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -3436,13 +3518,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.certificate1 = value;
+                                userCred.certificate1 = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.certificate1,
+                                hintText: userCred.certificate1,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -3480,13 +3562,13 @@ class _FormPageState extends State<FormPage> {
                                 ),
                                 child: TextFormField(
                                   onChanged: (value) {
-                                    user.certificate1Date = (value);
+                                    userCred.certificate1Date = (value);
                                   },
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12),
                                     ),
-                                    hintText: user.certificate1Date,
+                                    hintText: userCred.certificate1Date,
                                     hintStyle: GoogleFonts.lato(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w300,
@@ -3517,13 +3599,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.certificate1 = value;
+                                userCred.certificate1 = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.certificate1,
+                                hintText: userCred.certificate1,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -3561,13 +3643,13 @@ class _FormPageState extends State<FormPage> {
                                 ),
                                 child: TextFormField(
                                   onChanged: (value) {
-                                    user.certificate1Date = (value);
+                                    userCred.certificate1Date = (value);
                                   },
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12),
                                     ),
-                                    hintText: user.certificate1Date,
+                                    hintText: userCred.certificate1Date,
                                     hintStyle: GoogleFonts.lato(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w300,
@@ -3598,13 +3680,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.certificate1 = value;
+                                userCred.certificate1 = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.certificate1,
+                                hintText: userCred.certificate1,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -3642,13 +3724,13 @@ class _FormPageState extends State<FormPage> {
                                 ),
                                 child: TextFormField(
                                   onChanged: (value) {
-                                    user.certificate1Date = (value);
+                                    userCred.certificate1Date = (value);
                                   },
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12),
                                     ),
-                                    hintText: user.certificate1Date,
+                                    hintText: userCred.certificate1Date,
                                     hintStyle: GoogleFonts.lato(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w300,
@@ -3730,13 +3812,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.github = value;
+                                userCred.github = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.github,
+                                hintText: userCred.github,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
@@ -3764,13 +3846,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                             child: TextFormField(
                               onChanged: (value) {
-                                user.linkedin = value;
+                                userCred.linkedin = value;
                               },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                hintText: user.linkedin,
+                                hintText: userCred.linkedin,
                                 hintStyle: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w300,
