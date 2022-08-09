@@ -36,7 +36,7 @@ class _FormPageState extends State<FormPage> {
 
   var uid = FirebaseAuth.instance.currentUser!.uid;
 
-  String pathOfImage = "";
+  String pathOfImage = "assets/personal.png";
 
   void getImage() async {
     pathOfImage = await fire.setImage(
@@ -46,7 +46,7 @@ class _FormPageState extends State<FormPage> {
   }
 
   Widget displayeImage() {
-    if (pathOfImage != "") {
+    if (pathOfImage != "assets/personal.png") {
       return Image.network(
         pathOfImage,
         fit: BoxFit.cover,
@@ -256,7 +256,6 @@ class _FormPageState extends State<FormPage> {
                               child: TextFormField(
                                 onChanged: (value) {
                                   userCred.firstname = value;
-                                  // final map = <String, dynamic>{"first":user.firstname};
                                 },
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(

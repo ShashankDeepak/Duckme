@@ -111,9 +111,17 @@ class FirebaseCRUD {
 
     var downloadUrl = await snapshot.ref.getDownloadURL();
 
-    print("Success");
-
     return downloadUrl;
+  }
+
+  Future<dynamic> getData({required String uid, required String d}) async {
+    final docRef = FirebaseFirestore.instance.collection("user").doc(uid);
+
+    docRef.get().then((DocumentSnapshot doc) {
+      final data = doc.data() as Map<String, dynamic>;
+      var udata = data[d];
+      return udata;
+    });
   }
 
   UserCred getUser({required BuildContext context, required String uid}) {
@@ -197,8 +205,6 @@ class FirebaseCRUD {
       userCred.codechef = data["codechef"];
       userCred.github = data["github"];
       userCred.linkedin = data["linkedin"];
-
-      print("Success");
     }, onError: (e) {
       final snackBar = SnackBar(
         content: Text('Something is wrong, please check your internet'),

@@ -1,6 +1,8 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously, void_checks
 
 import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:duckme/Class/Firebase.dart';
 import 'package:duckme/pages/home.dart';
 import 'package:duckme/pages/form.dart';
 import 'package:duckme/pages/title_page.dart';
@@ -25,6 +27,38 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   @override
+  FirebaseCRUD fire = FirebaseCRUD();
+  List<String> ducks = [
+    "white.svg",
+    "Bored duck.svg",
+    "Heart eye duck.svg",
+    "Psy Duck.svg",
+    "Surprised duck.svg",
+    "Swag duck.svg"
+  ];
+
+  // SvgPicture duckPicture(){
+
+  //     return SvgPicture.asset("assets/${ducks[duck]}");
+  //   }
+  var uid = FirebaseAuth.instance.currentUser!.uid;
+  int duck = 0;
+  @override
+  Widget getDuck() {
+    final docRef = FirebaseFirestore.instance.collection("user").doc(uid);
+    docRef.get().then((DocumentSnapshot doc) {
+      final data = doc.data() as Map<String, dynamic>;
+      duck = data["duck"];
+      setState(() {});
+    });
+    return SvgPicture.asset("assets/Ducks/${ducks[duck]}");
+  }
+
+  void initState() {
+    print(duck);
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     double heightOfDevice = MediaQuery.of(context).size.height;
     double widthOfDevice = MediaQuery.of(context).size.width;
@@ -38,46 +72,6 @@ class _ProfilePageState extends State<ProfilePage> {
     }
 
     return Scaffold(
-      // bottomNavigationBar: SafeArea(
-      //   child: Padding(
-      //     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-      //     child: GNav(
-      //       rippleColor: Colors.grey[300]!,
-      //       hoverColor: Colors.grey[100]!,
-      //       gap: 8,
-      //       activeColor: Colors.black,
-      //       iconSize: 24,
-      //       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-      //       duration: Duration(milliseconds: 400),
-      //       tabBackgroundColor: Colors.grey[100]!,
-      //       color: Colors.black,
-      //       tabs: [
-      //         GButton(
-      //             icon: MdiIcons.fileDocumentEditOutline,
-      //             text: 'Form',
-      //             onPressed: () {
-      //               Navigator.popUntil(context, (route) => route.isFirst);
-
-      //               Navigator.pushReplacement(
-      //                 context,
-      //                 MaterialPageRoute(builder: (context) => FormPage()),
-      //               );
-      //             }),
-      //         GButton(
-      //             icon: MdiIcons.home,
-      //             text: 'Home',
-      //             onPressed: () {
-      //               Navigator.push(
-      //                 context,
-      //                 MaterialPageRoute(builder: (context) => Home()),
-      //               );
-      //             }),
-      //         GButton(icon: Icons.person, text: 'Profile', onPressed: () {}),
-      //       ],
-      //       selectedIndex: 2,
-      //     ),
-      //   ),
-      // ),
       body: Column(
         children: [
           Stack(
@@ -130,8 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Container(
                       width: w(0.165),
                       height: h(0.165),
-                      child:
-                          SvgPicture.asset("assets/Ducks/Surprised duck.svg"),
+                      child: getDuck(),
                     ),
                   ),
                 ],
