@@ -4,6 +4,7 @@ import 'package:duckme/Templates/Template2/fresherTemplate2.dart';
 import 'package:duckme/pages/form.dart';
 import 'package:duckme/pages/home.dart';
 import 'package:duckme/pages/title_page.dart';
+import 'package:duckme/persistenNavBar.dart';
 import 'package:duckme/testFile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: (FirebaseAuth.instance.currentUser == null ? titlePage() : Home()),
+      home: (FirebaseAuth.instance.currentUser == null
+          ? titlePage()
+          : PersistentNavBar()),
     );
   }
 }

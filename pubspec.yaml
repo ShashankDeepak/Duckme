@@ -46,6 +46,8 @@ dependencies:
   auto_size_text: ^3.0.0
   datetime_picker_formfield: ^2.0.0
   image_picker: ^0.8.5+3
+  persistent_bottom_nav_bar_v2: ^4.2.4
+  firebase_storage: ^10.3.4
 
 dev_dependencies:
   flutter_test:

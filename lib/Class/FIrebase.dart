@@ -1,11 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:io';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:duckme/Class/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 class FirebaseCRUD {
   UserCred temp = UserCred();
@@ -15,6 +18,8 @@ class FirebaseCRUD {
   }
 
   var db = FirebaseFirestore.instance;
+  final storage = FirebaseStorage.instance;
+  final storageRef = FirebaseStorage.instance.ref();
 
   void addData(UserCred userCred, String uid) {
     userCred.duckumber = random(0, 4);
@@ -99,7 +104,16 @@ class FirebaseCRUD {
 
   void setData({required String uid, required Map<String, dynamic> map}) {
     db.collection("user").doc(uid).update(map);
-    print("updated $uid");
+  }
+
+  Future<String> setImage({required File image, required String uid}) async {
+    var snapshot = await storageRef.child(uid).putFile(image);
+
+    var downloadUrl = await snapshot.ref.getDownloadURL();
+
+    print("Success");
+
+    return downloadUrl;
   }
 
   UserCred getUser({required BuildContext context, required String uid}) {
@@ -128,13 +142,14 @@ class FirebaseCRUD {
       userCred.masterLeft = data["masterLeft"];
       userCred.masterJoined = data["masterJoined"];
       userCred.masterCGPA = data["masterCGPA"];
+
       userCred.certificate1 = data["certificate1"];
       userCred.certificate1Date = data["certificate1Date"];
       userCred.certificate2 = data["certificate2"];
-
       userCred.certificate2Date = data["certificate2Date"];
       userCred.certificate3 = data["certificate3"];
       userCred.certificate3Date = data["certificate3Date"];
+
       userCred.project1 = data["project1"];
       userCred.project1Detail = data["project1Detail"];
       userCred.project2 = data["project2"];
@@ -143,7 +158,7 @@ class FirebaseCRUD {
       userCred.project3Detail = data["project3Detail"];
       userCred.internship1 = data["internship1"];
       userCred.internship1Detail = data["internship1Detail"];
-      userCred.internship1Joined = data["certificate2"];
+      userCred.internship1Joined = data["internship1Joined"];
       userCred.internship1Left = data["internship1Left"];
       userCred.internship2 = data["internship2"];
       userCred.internship2Detail = data["internship2Detail"];

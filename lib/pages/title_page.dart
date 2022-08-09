@@ -104,9 +104,7 @@ class titlePage extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 80.0, left: 40),
-                      child: SvgPicture.asset(
-                        "assets/Group 26.svg",
-                      ),
+                      child: SvgPicture.asset("assets/Group 26.svg"),
                     ),
                   ],
                 ),

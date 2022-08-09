@@ -38,46 +38,46 @@ class _ProfilePageState extends State<ProfilePage> {
     }
 
     return Scaffold(
-      bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-          child: GNav(
-            rippleColor: Colors.grey[300]!,
-            hoverColor: Colors.grey[100]!,
-            gap: 8,
-            activeColor: Colors.black,
-            iconSize: 24,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            duration: Duration(milliseconds: 400),
-            tabBackgroundColor: Colors.grey[100]!,
-            color: Colors.black,
-            tabs: [
-              GButton(
-                  icon: MdiIcons.fileDocumentEditOutline,
-                  text: 'Form',
-                  onPressed: () {
-                    Navigator.popUntil(context, (route) => route.isFirst);
+      // bottomNavigationBar: SafeArea(
+      //   child: Padding(
+      //     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+      //     child: GNav(
+      //       rippleColor: Colors.grey[300]!,
+      //       hoverColor: Colors.grey[100]!,
+      //       gap: 8,
+      //       activeColor: Colors.black,
+      //       iconSize: 24,
+      //       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+      //       duration: Duration(milliseconds: 400),
+      //       tabBackgroundColor: Colors.grey[100]!,
+      //       color: Colors.black,
+      //       tabs: [
+      //         GButton(
+      //             icon: MdiIcons.fileDocumentEditOutline,
+      //             text: 'Form',
+      //             onPressed: () {
+      //               Navigator.popUntil(context, (route) => route.isFirst);
 
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => FormPage()),
-                    );
-                  }),
-              GButton(
-                  icon: MdiIcons.home,
-                  text: 'Home',
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Home()),
-                    );
-                  }),
-              GButton(icon: Icons.person, text: 'Profile', onPressed: () {}),
-            ],
-            selectedIndex: 2,
-          ),
-        ),
-      ),
+      //               Navigator.pushReplacement(
+      //                 context,
+      //                 MaterialPageRoute(builder: (context) => FormPage()),
+      //               );
+      //             }),
+      //         GButton(
+      //             icon: MdiIcons.home,
+      //             text: 'Home',
+      //             onPressed: () {
+      //               Navigator.push(
+      //                 context,
+      //                 MaterialPageRoute(builder: (context) => Home()),
+      //               );
+      //             }),
+      //         GButton(icon: Icons.person, text: 'Profile', onPressed: () {}),
+      //       ],
+      //       selectedIndex: 2,
+      //     ),
+      //   ),
+      // ),
       body: Column(
         children: [
           Stack(

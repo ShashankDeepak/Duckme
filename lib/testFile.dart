@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:duckme/Class/FIrebase.dart';
+import 'package:duckme/Class/Firebase.dart';
 import 'package:duckme/Class/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
