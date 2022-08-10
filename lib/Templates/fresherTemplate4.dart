@@ -41,6 +41,7 @@ class _fresherTemplate4State extends State<fresherTemplate4> {
             child: Image.network(
               userCred.image,
               fit: BoxFit.fill,
+              height: MediaQuery.of(context).size.height * 0.3,
               width: MediaQuery.of(context).size.width * (1),
             ),
           );
