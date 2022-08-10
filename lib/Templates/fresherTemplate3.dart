@@ -38,6 +38,7 @@ class _fresherTemplate3State extends State<fresherTemplate3> {
             child: Image.network(
               userCred.image,
               fit: BoxFit.fill,
+              height: MediaQuery.of(context).size.height * 0.3,
               width: MediaQuery.of(context).size.width * (1),
             ),
           );
@@ -107,12 +108,11 @@ class _fresherTemplate3State extends State<fresherTemplate3> {
       await file.writeAsBytes(await pdf.save());
       pdfDownloaded(context, nameOfFile);
     } catch (e) {
-      permissionNotGanted(context);
+      pdfError(context);
     }
   }
 
-  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> permissionNotGanted(
-      contex) {
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> pdfError(contex) {
     const snackBar = SnackBar(
       content: Text('There was some error please restart the app'),
     );
@@ -121,7 +121,7 @@ class _fresherTemplate3State extends State<fresherTemplate3> {
 
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason> pdfDownloaded(
       BuildContext context, String name) {
-    String n = "Download done, check your downloads folder with name $name.pdf";
+    String n = "$name.pdf downloaded, check your downloads folder";
     var snackBar = SnackBar(
       content: Text(n),
     );
