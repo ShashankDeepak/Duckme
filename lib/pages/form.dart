@@ -17,7 +17,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
 import '../Class/user.dart';
 
 class FormPage extends StatefulWidget {
@@ -36,34 +35,61 @@ class _FormPageState extends State<FormPage> {
 
   var uid = FirebaseAuth.instance.currentUser!.uid;
 
-  String pathOfImage = "assets/personal.png";
+  String pathOfImage = "";
 
-  void getImage() async {
-    pathOfImage = await fire.setImage(
-      image: imageFile!,
-      uid: uid,
-    );
+  bool isLoading = true;
+
+  Future<void> getImage() async {
+    setState(() async {
+      userCred.image = await fire.setImage(
+        image: imageFile!,
+        uid: uid,
+      );
+      isLoading = false;
+    });
   }
 
+  Widget userImage() {
+    return isLoading
+        ? Container(
+            margin: EdgeInsets.symmetric(horizontal: 80, vertical: 40),
+            height: 30,
+            width: 30,
+            child: CircularProgressIndicator())
+        : Image.network(
+            userCred.image,
+            fit: BoxFit.cover,
+          );
+  }
+
+  var isLoadingDisplay = false;
   Widget displayeImage() {
-    if (pathOfImage != "assets/personal.png") {
-      return Image.network(
-        pathOfImage,
-        fit: BoxFit.cover,
-      );
-    } else {
-      return Image.asset(
-        "assets/personal.png",
-        fit: BoxFit.cover,
-      );
-    }
+    return isLoadingDisplay
+        ? Container(
+            margin: EdgeInsets.symmetric(horizontal: 80, vertical: 40),
+            height: 30,
+            width: 30,
+            child: CircularProgressIndicator())
+        : Image.asset(
+            "assets/personal.png",
+            fit: BoxFit.cover,
+          );
+  }
+
+  Future<void> getUserImage() async {
+    userCred.image = await fire.getImage(uid);
+    setState(() {
+      isLoading = false;
+    });
   }
 
   void pickImage() async {
     var image = await imagePicker.pickImage(source: ImageSource.gallery);
-    setState(() {
+    setState(() async {
       imageFile = File(image!.path);
-      getImage();
+      isLoadingDisplay = true;
+      isLoading = true;
+      await getImage();
     });
   }
 
@@ -71,7 +97,9 @@ class _FormPageState extends State<FormPage> {
   void initState() {
     final uid = FirebaseAuth.instance.currentUser!.uid;
 
-    userCred = fire.getUser(context: context, uid: uid);
+    userCred = fire.getUser(uid: uid);
+    getUserImage();
+
     super.initState();
   }
 
@@ -177,11 +205,12 @@ class _FormPageState extends State<FormPage> {
                                       child: InkWell(
                                         onTap: () async {
                                           pickImage();
-                                          // print(pathOfImage);
                                         },
                                         child: Card(
                                           elevation: 5,
-                                          child: displayeImage(),
+                                          child: userCred.image == ""
+                                              ? displayeImage()
+                                              : userImage(),
                                         ),
                                       ),
                                     ),
@@ -474,6 +503,7 @@ class _FormPageState extends State<FormPage> {
                                       fire.setData(
                                           uid: uid,
                                           map: <String, dynamic>{
+                                            "image": userCred.image,
                                             "first": userCred.firstname,
                                             "last": userCred.lastname,
                                             "date": userCred.date,
@@ -3641,7 +3671,7 @@ class _FormPageState extends State<FormPage> {
                                 left: w(0.04),
                               ),
                               child: Text(
-                                "Certificate 1",
+                                "Certificate 2",
                                 style: GoogleFonts.lato(
                                   fontSize: 16,
                                   color: HexColor("2E2E2E"),
@@ -3655,13 +3685,13 @@ class _FormPageState extends State<FormPage> {
                               ),
                               child: TextFormField(
                                 onChanged: (value) {
-                                  userCred.certificate1 = value;
+                                  userCred.certificate2 = value;
                                 },
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: userCred.certificate1,
+                                  hintText: userCred.certificate2,
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -3699,13 +3729,13 @@ class _FormPageState extends State<FormPage> {
                                   ),
                                   child: TextFormField(
                                     onChanged: (value) {
-                                      userCred.certificate1Date = (value);
+                                      userCred.certificate2Date = (value);
                                     },
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(12),
                                       ),
-                                      hintText: userCred.certificate1Date,
+                                      hintText: userCred.certificate2Date,
                                       hintStyle: GoogleFonts.lato(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w300,
@@ -3722,7 +3752,7 @@ class _FormPageState extends State<FormPage> {
                                 left: w(0.04),
                               ),
                               child: Text(
-                                "Certificate 1",
+                                "Certificate 3",
                                 style: GoogleFonts.lato(
                                   fontSize: 16,
                                   color: HexColor("2E2E2E"),
@@ -3736,13 +3766,13 @@ class _FormPageState extends State<FormPage> {
                               ),
                               child: TextFormField(
                                 onChanged: (value) {
-                                  userCred.certificate1 = value;
+                                  userCred.certificate3 = value;
                                 },
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  hintText: userCred.certificate1,
+                                  hintText: userCred.certificate3,
                                   hintStyle: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -3780,13 +3810,13 @@ class _FormPageState extends State<FormPage> {
                                   ),
                                   child: TextFormField(
                                     onChanged: (value) {
-                                      userCred.certificate1Date = (value);
+                                      userCred.certificate3Date = (value);
                                     },
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(12),
                                       ),
-                                      hintText: userCred.certificate1Date,
+                                      hintText: userCred.certificate3Date,
                                       hintStyle: GoogleFonts.lato(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w300,

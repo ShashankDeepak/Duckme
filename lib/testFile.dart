@@ -13,42 +13,42 @@ class TestFile extends StatefulWidget {
 
 class _TestFileState extends State<TestFile> {
   // final FirebaseAuth auth =;
-  final uid = FirebaseAuth.instance.currentUser!.uid;
+  // final uid = FirebaseAuth.instance.currentUser!.uid;
+
+  final uid = "utpqn2gxzBQSgkzRrQjQaOm6e7f2";
 
   var db = FirebaseFirestore.instance;
 
-  final docRef = FirebaseFirestore.instance
-      .collection("user")
-      .doc(FirebaseAuth.instance.currentUser!.uid);
+  var isLoading = true;
+
   FirebaseCRUD fire = new FirebaseCRUD();
+  UserCred userCred = UserCred();
+
+  Future<void> getUserImage() async {
+    userCred.image = await fire.getImage(uid);
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  // CollectionReference user = FirebaseFirestore.instance.collection('user');
+  @override
+  void initState() {
+    userCred = fire.getUser(uid: uid);
+    getUserImage();
+    super.initState();
+  }
 
   @override
-  // CollectionReference user = FirebaseFirestore.instance.collection('user');
-
   Widget build(BuildContext context) {
-    UserCred userCred = fire.getUser(context: context, uid: uid);
-
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: Container(
-            height: 30,
-            child: InkWell(
-              onTap: () {
-                docRef.get().then(
-                  (DocumentSnapshot doc) {
-                    final data = doc.data() as Map<String, dynamic>;
-                    userCred.duckumber = data["duck"];
-                  },
-                  onError: (e) => print("Error getting document: $e"),
-                );
-                setState(() {
-                  userCred.duckumber = 5;
-                });
-              },
-              child: Text(userCred.duckumber.toString()),
-            ),
-          ),
+              height: 100,
+              child: isLoading
+                  ? CircularProgressIndicator()
+                  : Image.network(userCred.image)),
         ),
       ),
     );

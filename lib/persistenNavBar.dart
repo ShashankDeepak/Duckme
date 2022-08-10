@@ -33,6 +33,16 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
           activeColorPrimary: Colors.grey[100]!,
           activeColorSecondary: Colors.black,
           inactiveColorPrimary: Colors.black,
+          // onPressed: (context) => {
+          //       Navigator.push(
+          //         context!,
+          //         MaterialPageRoute(
+          //           builder: (BuildContext context) => Home(),
+          //         ),
+          //       ),
+          //       _controller.index = 0,
+          //       setState(() {}),
+          //     }
         ),
         PersistentBottomNavBarItem(
           icon: Icon(MdiIcons.fileDocumentEditOutline),
@@ -53,7 +63,10 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
 
     return PersistentTabView(
       context,
+      popActionScreens: PopActionScreensType.all,
       padding: NavBarPadding.only(left: 10, right: 10),
+      // popAllScreensOnTapOfSelectedTab: true,
+      // handleAndroidBackButtonPress: false,
       backgroundColor: Colors.grey[100]!,
       controller: _controller,
       screens: [Home(), FormPage(), ProfilePage()],

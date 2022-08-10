@@ -17,6 +17,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'dart:ui' as ui;
 
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -37,13 +38,9 @@ class _ProfilePageState extends State<ProfilePage> {
     "Swag duck.svg"
   ];
 
-  // SvgPicture duckPicture(){
-
-  //     return SvgPicture.asset("assets/${ducks[duck]}");
-  //   }
   var uid = FirebaseAuth.instance.currentUser!.uid;
   int duck = 0;
-  @override
+
   Widget getDuck() {
     final docRef = FirebaseFirestore.instance.collection("user").doc(uid);
     docRef.get().then((DocumentSnapshot doc) {
@@ -59,6 +56,15 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
   }
 
+  void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => widget,
+        ),
+        (route) => false,
+      );
+
+  @override
   Widget build(BuildContext context) {
     double heightOfDevice = MediaQuery.of(context).size.height;
     double widthOfDevice = MediaQuery.of(context).size.width;
@@ -289,15 +295,35 @@ class _ProfilePageState extends State<ProfilePage> {
           TextButton(
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
-              Navigator.popUntil(context, (route) => route.isFirst);
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => titlePage(),
+
+              navigateAndFinish(context, titlePage());
+
+              Navigator.of(context).pushAndRemoveUntil(
+                CupertinoPageRoute(
+                  builder: (BuildContext context) {
+                    return titlePage();
+                  },
                 ),
+                (_) => false,
               );
 
-              // print(uid);
+              pushNewScreen(
+                context,
+                screen: titlePage(),
+                withNavBar: false,
+              );
+
+              // Navigator.of(context).popUntil((route) => route.isFirst);
+              // Navigator.of(context).pushAndRemoveUntil(
+              //     MaterialPageRoute(builder: (context) => titlePage()),
+              //     (Route<dynamic> route) => false);
+
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (BuildContext context) => titlePage(),
+              //   ),
+              // );
             },
             child: Padding(
               padding: EdgeInsets.only(

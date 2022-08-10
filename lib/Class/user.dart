@@ -1,5 +1,6 @@
 class UserCred {
   int duckumber = 0;
+  String image = "";
   String uname = "brando";
   String firstname = "Brad";
   String lastname = "Johnson";

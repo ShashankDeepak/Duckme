@@ -22,10 +22,11 @@ class FirebaseCRUD {
   final storageRef = FirebaseStorage.instance.ref();
 
   void addData(UserCred userCred, String uid) {
-    userCred.duckumber = random(0, 4);
+    userCred.duckumber = random(1, 4);
 
     final userCredCred = <String, dynamic>{
       "duck": userCred.duckumber,
+      "image": userCred.image,
       "userCredname": userCred.uname,
       "first": userCred.firstname,
       "last": userCred.lastname,
@@ -108,10 +109,14 @@ class FirebaseCRUD {
 
   Future<String> setImage({required File image, required String uid}) async {
     var snapshot = await storageRef.child(uid).putFile(image);
-
     var downloadUrl = await snapshot.ref.getDownloadURL();
-
     return downloadUrl;
+  }
+
+  Future<String> getImage(String uid) async {
+    var ref = FirebaseStorage.instance.ref().child(uid);
+    String url = (await ref.getDownloadURL()).toString();
+    return url;
   }
 
   Future<dynamic> getData({required String uid, required String d}) async {
@@ -124,14 +129,16 @@ class FirebaseCRUD {
     });
   }
 
-  UserCred getUser({required BuildContext context, required String uid}) {
+  UserCred getUser({required String uid}) {
     UserCred userCred = UserCred();
     final docRef = FirebaseFirestore.instance.collection("user").doc(uid);
 
     docRef.get().then((DocumentSnapshot doc) {
       final data = doc.data() as Map<String, dynamic>;
       userCred.duckumber = data["duck"];
+
       userCred.uname = data["userCredname"];
+      userCred.image = data["image"];
       userCred.firstname = data["first"];
       userCred.lastname = data["last"];
       userCred.date = data["date"];
@@ -205,12 +212,6 @@ class FirebaseCRUD {
       userCred.codechef = data["codechef"];
       userCred.github = data["github"];
       userCred.linkedin = data["linkedin"];
-    }, onError: (e) {
-      final snackBar = SnackBar(
-        content: Text('Something is wrong, please check your internet'),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      print("Error getting document: $e");
     });
 
     return userCred;

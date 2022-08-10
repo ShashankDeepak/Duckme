@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_build_context_synchronously
 
+import 'package:duckme/Templates/Templates%201/FresherTemplate1.dart';
 import 'package:duckme/pages/form.dart';
 import 'package:duckme/pages/profile_page.dart';
 import 'package:duckme/pages/title_page.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -108,14 +110,23 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          pushNewScreen(
+                            context,
+                            screen: fresherTemplate1(),
+                            withNavBar: false,
+                          );
+                        },
                         child: Container(
                           width: w(0.3),
                           height: h(0.22),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Color(0xffd9d9d9),
-                          ),
+                              borderRadius: BorderRadius.circular(30),
+                              // color: Color(0xffd9d9d9),
+                              image: DecorationImage(
+                                image: AssetImage("assets/template1.jpg"),
+                                fit: BoxFit.fill,
+                              )),
                         ),
                       ),
                       InkWell(

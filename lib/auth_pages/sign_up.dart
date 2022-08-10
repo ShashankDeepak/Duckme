@@ -4,11 +4,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:duckme/Class/Firebase.dart';
 import 'package:duckme/Class/user.dart';
 import 'package:duckme/pages/home.dart';
+import 'package:duckme/persistenNavBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -229,10 +231,15 @@ class _SignUpState extends State<SignUp> {
                                 User? user = FirebaseAuth.instance.currentUser;
                                 fire.addData(userCred, user!.uid);
 
-                                Navigator.push(
+                                Navigator.of(context)
+                                    .popUntil((route) => route.isFirst);
+
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Home()),
+                                    builder: (BuildContext context) =>
+                                        PersistentNavBar(),
+                                  ),
                                 );
                               } on FirebaseAuthException catch (e) {
                                 print(e.code);
