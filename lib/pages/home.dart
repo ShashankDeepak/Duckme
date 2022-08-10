@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_build_context_synchronously
 
-import 'package:duckme/Templates/Templates%201/FresherTemplate1.dart';
+import 'package:duckme/Templates/FresherTemplate1.dart';
+import 'package:duckme/Templates/fresherTemplate2.dart';
+import 'package:duckme/Templates/fresherTemplate3.dart';
+import 'package:duckme/Templates/fresherTemplate4.dart';
 import 'package:duckme/pages/form.dart';
 import 'package:duckme/pages/profile_page.dart';
 import 'package:duckme/pages/title_page.dart';
@@ -121,33 +124,52 @@ class _HomeState extends State<Home> {
                           width: w(0.3),
                           height: h(0.22),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              // color: Color(0xffd9d9d9),
-                              image: DecorationImage(
-                                image: AssetImage("assets/template1.jpg"),
-                                fit: BoxFit.fill,
-                              )),
+                            borderRadius: BorderRadius.circular(30),
+                            // color: Color(0xffd9d9d9),
+                            image: DecorationImage(
+                              image: AssetImage("assets/template1.jpg"),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          pushNewScreen(
+                            context,
+                            screen: fresherTemplate2(),
+                            withNavBar: false,
+                          );
+                        },
                         child: Container(
                           width: w(0.3),
                           height: h(0.25),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color(0xffd9d9d9),
+                            image: DecorationImage(
+                              image: AssetImage("assets/template2.jpg"),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          pushNewScreen(
+                            context,
+                            screen: fresherTemplate3(),
+                            withNavBar: false,
+                          );
+                        },
                         child: Container(
                           width: w(0.3),
                           height: h(0.22),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color(0xffd9d9d9),
+                            image: DecorationImage(
+                              image: AssetImage("assets/template3.jpg"),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                       ),
@@ -170,64 +192,101 @@ class _HomeState extends State<Home> {
                         ),
                         child: Column(
                           children: [
+                            // Padding(
+                            //   padding: EdgeInsets.only(top: 45.0),
+                            //   child: Row(
+                            //     mainAxisAlignment:
+                            //         MainAxisAlignment.spaceEvenly,
+                            //     crossAxisAlignment: CrossAxisAlignment.start,
+                            //     children: [
+                            //       InkWell(
+                            //         onTap: () {},
+                            //         child: Container(
+                            //           width: 163,
+                            //           height: 58,
+                            //           decoration: BoxDecoration(
+                            //             borderRadius: BorderRadius.circular(10),
+                            //             color: Color(0xffff8e4e),
+                            //           ),
+                            //           child: Row(
+                            //             mainAxisAlignment:
+                            //                 MainAxisAlignment.spaceEvenly,
+                            //             children: [
+                            //               SvgPicture.asset(
+                            //                   "assets/Girl fresher.svg"),
+                            //               Text(
+                            //                 "Freshman",
+                            //                 style: GoogleFonts.lato(
+                            //                     fontSize: 20,
+                            //                     color: Colors.white),
+                            //               ),
+                            //             ],
+                            //           ),
+                            //         ),
+                            //       ),
+                            //       InkWell(
+                            //         onTap: () {},
+                            //         child: Container(
+                            //           width: 163,
+                            //           height: 58,
+                            //           decoration: BoxDecoration(
+                            //             borderRadius: BorderRadius.circular(10),
+                            //             color: Color(0xffff8e4e),
+                            //           ),
+                            //           child: Row(
+                            //             mainAxisAlignment:
+                            //                 MainAxisAlignment.spaceEvenly,
+                            //             children: [
+                            //               SvgPicture.asset(
+                            //                   "assets/male employee.svg"),
+                            //               Text(
+                            //                 "Experienced",
+                            //                 style: GoogleFonts.lato(
+                            //                     fontSize: 20,
+                            //                     color: Colors.white),
+                            //               ),
+                            //             ],
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
                             Padding(
-                              padding: EdgeInsets.only(top: 45.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      width: 163,
-                                      height: 58,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Color(0xffff8e4e),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          SvgPicture.asset(
-                                              "assets/Girl fresher.svg"),
-                                          Text(
-                                            "Freshman",
-                                            style: GoogleFonts.lato(
-                                                fontSize: 20,
-                                                color: Colors.white),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                              padding: EdgeInsets.only(
+                                  top: 45.0, left: 30, right: 30),
+                              child: InkWell(
+                                onTap: () {
+                                  pushNewScreen(
+                                    context,
+                                    screen: FormPage(),
+                                    withNavBar: false,
+                                  );
+                                },
+                                child: Container(
+                                  height: h(0.08),
+                                  decoration: BoxDecoration(
+                                    // border: Border.all(),
+                                    color: Color.fromARGB(255, 254, 161, 21),
                                   ),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      width: 163,
-                                      height: 58,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Color(0xffff8e4e),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.fileDocumentEditOutline,
+                                        color: Colors.white,
+                                        size: 30,
                                       ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          SvgPicture.asset(
-                                              "assets/male employee.svg"),
-                                          Text(
-                                            "Experienced",
-                                            style: GoogleFonts.lato(
-                                                fontSize: 20,
-                                                color: Colors.white),
-                                          ),
-                                        ],
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 20),
                                       ),
-                                    ),
+                                      Text("Submit Form",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              color: Colors.white))
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                             Container(
@@ -242,46 +301,86 @@ class _HomeState extends State<Home> {
                                 childAspectRatio: 1 / 1.4,
                                 children: [
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      pushNewScreen(
+                                        context,
+                                        screen: fresherTemplate1(),
+                                        withNavBar: false,
+                                      );
+                                    },
                                     child: Container(
                                       width: w(0.3),
                                       height: h(0.25),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(30),
-                                        color: Color(0xffd9d9d9),
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/template1.jpg"),
+                                          fit: BoxFit.fill,
+                                        ),
                                       ),
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      pushNewScreen(
+                                        context,
+                                        screen: fresherTemplate2(),
+                                        withNavBar: false,
+                                      );
+                                    },
                                     child: Container(
                                       width: w(0.3),
                                       height: h(0.25),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(30),
-                                        color: Color(0xffd9d9d9),
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/template2.jpg"),
+                                          fit: BoxFit.fill,
+                                        ),
                                       ),
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      pushNewScreen(
+                                        context,
+                                        screen: fresherTemplate3(),
+                                        withNavBar: false,
+                                      );
+                                    },
                                     child: Container(
                                       width: w(0.3),
                                       height: h(0.25),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(30),
-                                        color: Color(0xffd9d9d9),
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/template3.jpg"),
+                                          fit: BoxFit.fill,
+                                        ),
                                       ),
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      pushNewScreen(
+                                        context,
+                                        screen: fresherTemplate4(),
+                                        withNavBar: false,
+                                      );
+                                    },
                                     child: Container(
                                       width: w(0.3),
                                       height: h(0.25),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(30),
-                                        color: Color(0xffd9d9d9),
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/template4.jpg"),
+                                          fit: BoxFit.fill,
+                                        ),
                                       ),
                                     ),
                                   ),

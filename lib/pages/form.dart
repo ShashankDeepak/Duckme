@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:duckme/Class/Firebase.dart';
 import 'package:duckme/pages/home.dart';
 import 'package:duckme/pages/profile_page.dart';
+import 'package:duckme/persistenNavBar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -17,6 +18,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import '../Class/user.dart';
 
 class FormPage extends StatefulWidget {
@@ -124,7 +126,17 @@ class _FormPageState extends State<FormPage> {
     );
 
     return WillPopScope(
-      onWillPop: () async => false,
+      onWillPop: () async {
+        Navigator.of(context).popUntil((route) => route.isFirst);
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => PersistentNavBar(),
+          ),
+        );
+        return await true;
+      },
       child: SafeArea(
         child: GestureDetector(
           onTap: () {

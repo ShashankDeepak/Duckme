@@ -41,11 +41,16 @@ class _ProfilePageState extends State<ProfilePage> {
   var uid = FirebaseAuth.instance.currentUser!.uid;
   int duck = 0;
 
+  String name = "Brad Jhonson";
+  String email = "bradj@gmail.com";
+
   Widget getDuck() {
     final docRef = FirebaseFirestore.instance.collection("user").doc(uid);
     docRef.get().then((DocumentSnapshot doc) {
       final data = doc.data() as Map<String, dynamic>;
       duck = data["duck"];
+      email = data["email"];
+      name = data["first"] + data["last"];
       setState(() {});
     });
     return SvgPicture.asset("assets/Ducks/${ducks[duck]}");
@@ -160,7 +165,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Brad Johnson",
+                      name,
                       style: GoogleFonts.lato(
                         fontSize: 21,
                         fontWeight: FontWeight.w300,
@@ -177,7 +182,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "bradj@gmail.com",
+                      email,
                       style: GoogleFonts.lato(
                         fontSize: 21,
                         fontWeight: FontWeight.w300,

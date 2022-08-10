@@ -1,26 +1,32 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_interpolation_to_compose_strings
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:duckme/Templates/Templates%201/JobTemplate1.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
-import '../../Class/Firebase.dart';
-import '../../Class/user.dart';
+import '../Class/Firebase.dart';
+import '../Class/user.dart';
 
-class fresherTemplate1 extends StatefulWidget {
-  fresherTemplate1({Key? key}) : super(key: key);
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:screenshot/screenshot.dart';
+import 'dart:io';
+import 'dart:math';
+
+class fresherTemplate4 extends StatefulWidget {
+  fresherTemplate4({Key? key}) : super(key: key);
 
   @override
-  State<fresherTemplate1> createState() => _fresherTemplate1State();
+  State<fresherTemplate4> createState() => _fresherTemplate4State();
 }
 
-class _fresherTemplate1State extends State<fresherTemplate1> {
+class _fresherTemplate4State extends State<fresherTemplate4> {
   UserCred userCred = UserCred();
   FirebaseCRUD fire = FirebaseCRUD();
   var uid = FirebaseAuth.instance.currentUser!.uid;
@@ -67,6 +73,64 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
     super.initState();
   }
 
+  ScreenshotController screenshotController = ScreenshotController();
+
+  String generateRandomString(int len) {
+    var r = Random();
+    return String.fromCharCodes(
+        List.generate(len, (index) => r.nextInt(33) + 89));
+  }
+
+  Uint8List? _imageFile;
+  Future<void> getPdf(BuildContext context) async {
+    await screenshotController.capture().then(
+      (image) {
+        _imageFile = image!;
+      },
+    );
+
+    try {
+      final pdf = pw.Document();
+
+      pdf.addPage(
+        pw.Page(
+          pageFormat: PdfPageFormat.a3,
+          margin: pw.EdgeInsets.all(1),
+          build: (pw.Context context) {
+            return pw.Image(
+              pw.MemoryImage(_imageFile!),
+              fit: pw.BoxFit.fill,
+            );
+          },
+        ),
+      );
+      Directory dir = Directory('/storage/emulated/0/Download');
+      var nameOfFile = generateRandomString(5);
+      final file = File("${dir.path}/$nameOfFile.pdf");
+      await file.writeAsBytes(await pdf.save());
+      pdfDownloaded(context, nameOfFile);
+    } catch (e) {
+      permissionNotGanted(context);
+    }
+  }
+
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> permissionNotGanted(
+      contex) {
+    const snackBar = SnackBar(
+      content: Text('There was some error please restart the app'),
+    );
+    return ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> pdfDownloaded(
+      BuildContext context, String name) {
+    String n = "Download done, check your downloads folder with name $name.pdf";
+    var snackBar = SnackBar(
+      content: Text(n),
+    );
+    return ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   @override
   Widget build(BuildContext context) {
     double h(double height) {
@@ -94,6 +158,7 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
             child: FloatingActionButton(
               onPressed: () {
                 // Add your onPressed code here!
+                getPdf(context);
               },
 
               // backgroundColor: Colors.green,
@@ -267,7 +332,7 @@ class _fresherTemplate1State extends State<fresherTemplate1> {
             Expanded(
               child: Container(
                 height: h(1),
-                color: Colors.grey,
+                color: Color.fromARGB(255, 137, 147, 221),
                 child: InkWell(
                   onTap: () => {},
                   child: Column(
