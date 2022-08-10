@@ -138,10 +138,6 @@ class _fresherTemplate3State extends State<fresherTemplate3> {
       return MediaQuery.of(context).size.width * width;
     }
 
-    int index = 0;
-
-    String name = "Shashank";
-
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => {setState(() {})},
     );
@@ -154,11 +150,8 @@ class _fresherTemplate3State extends State<fresherTemplate3> {
           child: FittedBox(
             child: FloatingActionButton(
               onPressed: () {
-                // Add your onPressed code here!
                 getPdf(context);
               },
-
-              // backgroundColor: Colors.green,
               child: const Icon(
                 Icons.download,
               ),

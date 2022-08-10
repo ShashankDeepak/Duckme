@@ -168,367 +168,160 @@ class _fresherTemplate4State extends State<fresherTemplate4> {
             ),
           ),
         ),
-        body: Row(
-          children: [
-            Expanded(
-              child: Container(
-                height: h(1),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    userCred.image == ""
-                        ? displayRawImage(context)
-                        : displayImage(context),
-                    Text(
-                      "Contacts",
-                      style: GoogleFonts.lato(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    Text(
-                      "Email: " + userCred.email,
-                      style: GoogleFonts.lato(
-                        fontSize: 12,
-                      ),
-                    ),
-                    Text(
-                      "Phone: " + userCred.phone,
-                      style: GoogleFonts.lato(
-                        fontSize: 12,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: h(0.03),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Certificates",
-                            style: GoogleFonts.lato(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 8.0),
-                            child: Text(
-                              userCred.certificate1,
-                              style: GoogleFonts.lato(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            userCred.certificate1Date,
-                            style: GoogleFonts.lato(
-                              fontSize: 12,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 18.0),
-                            child: Text(
-                              userCred.certificate2,
-                              style: GoogleFonts.lato(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            userCred.certificate2Date,
-                            style: GoogleFonts.lato(
-                              fontSize: 12,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 18.0),
-                            child: Text(
-                              userCred.certificate3,
-                              style: GoogleFonts.lato(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            userCred.certificate3Date,
-                            style: GoogleFonts.lato(
-                              fontSize: 12,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: h(0.03),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Education",
-                                  style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 8.0),
-                                  child: Text(
-                                    "${userCred.universityJoined} - ${userCred.universityLeft}",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  userCred.university,
-                                  style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                Text(
-                                  userCred.universityCGPA.toString(),
-                                  style: GoogleFonts.lato(
-                                    fontSize: 10,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 15.0),
-                                  child: Text(
-                                    "${userCred.highSchoolJoined} - ${userCred.highSchoolLeft}",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  userCred.highschool,
-                                  style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                Text(
-                                  userCred.highSchoolmarks.toString(),
-                                  style: GoogleFonts.lato(
-                                    fontSize: 10,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                height: h(1),
-                color: Color.fromARGB(255, 137, 147, 221),
-                child: InkWell(
-                  onTap: () => {},
+        body: Screenshot(
+          controller: screenshotController,
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  height: h(1),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: h(0.04),
-                        ),
-                        child: Text(
-                          userCred.firstname,
-                          style: GoogleFonts.josefinSlab(
-                            fontSize: 45,
-                          ),
+                      userCred.image == ""
+                          ? displayRawImage(context)
+                          : displayImage(context),
+                      Text(
+                        "Contacts",
+                        style: GoogleFonts.lato(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
                         ),
                       ),
                       Text(
-                        userCred.lastname,
-                        style: GoogleFonts.josefinSlab(
-                          fontSize: 45,
-                          fontWeight: FontWeight.bold,
+                        "Email: " + userCred.email,
+                        style: GoogleFonts.lato(
+                          fontSize: 12,
                         ),
                       ),
-                      // AutoSizeText(Text(userCred.highlight)),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 14.0),
-                        child: AutoSizeText(
-                          userCred.highlight,
-                          maxLines: 1,
-                          style:
-                              TextStyle(color: Color.fromARGB(255, 9, 32, 51)),
+                      Text(
+                        "Phone: " + userCred.phone,
+                        style: GoogleFonts.lato(
+                          fontSize: 12,
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: h(0.05),
-                          left: w(0.02),
+                          top: h(0.03),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Skills",
+                              "Certificates",
                               style: GoogleFonts.lato(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
                               ),
                             ),
-                            Text(
-                              "• ${userCred.skill1}",
-                              style: GoogleFonts.lato(
-                                fontSize: 12,
-                              ),
-                            ),
-                            Text(
-                              "• ${userCred.skill2}",
-                              style: GoogleFonts.lato(
-                                fontSize: 12,
-                              ),
-                            ),
-                            Text(
-                              "• ${userCred.skill3}",
-                              style: GoogleFonts.lato(
-                                fontSize: 12,
-                              ),
-                            ),
-                            Text(
-                              "• ${userCred.skill4}",
-                              style: GoogleFonts.lato(
-                                fontSize: 12,
-                              ),
-                            ),
                             Padding(
-                              padding: EdgeInsets.only(top: h(0.03)),
+                              padding: EdgeInsets.only(top: 8.0),
                               child: Text(
-                                "Projects",
+                                userCred.certificate1,
                                 style: GoogleFonts.lato(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 18,
+                                  fontSize: 14,
                                 ),
                               ),
                             ),
+                            Text(
+                              userCred.certificate1Date,
+                              style: GoogleFonts.lato(
+                                fontSize: 12,
+                              ),
+                            ),
                             Padding(
-                              padding: EdgeInsets.only(top: h(0.02)),
+                              padding: EdgeInsets.only(top: 18.0),
                               child: Text(
-                                userCred.project1,
+                                userCred.certificate2,
                                 style: GoogleFonts.lato(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 13,
+                                  fontSize: 14,
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 8.0),
-                              child: AutoSizeText(
-                                // "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
-                                userCred.project1Detail,
-                                maxLines: 4,
-                                style: GoogleFonts.lato(
-                                  fontSize: 10,
-                                ),
+                            Text(
+                              userCred.certificate2Date,
+                              style: GoogleFonts.lato(
+                                fontSize: 12,
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: h(0.015)),
+                              padding: EdgeInsets.only(top: 18.0),
                               child: Text(
-                                userCred.project2,
+                                userCred.certificate3,
                                 style: GoogleFonts.lato(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 13,
+                                  fontSize: 14,
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 8.0),
-                              child: AutoSizeText(
-                                // "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
-                                userCred.project2Detail,
-                                maxLines: 4,
-                                style: GoogleFonts.lato(
-                                  fontSize: 10,
-                                ),
+                            Text(
+                              userCred.certificate3Date,
+                              style: GoogleFonts.lato(
+                                fontSize: 12,
                               ),
                             ),
                             Padding(
                               padding: EdgeInsets.only(
-                                top: h(0.02),
+                                top: h(0.03),
                               ),
-                              child: Text(
-                                userCred.project3,
-                                style: GoogleFonts.lato(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 8.0),
-                              child: AutoSizeText(
-                                // "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
-                                userCred.project3Detail,
-                                style: GoogleFonts.lato(
-                                  fontSize: 10,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: h(0.03)),
-                              child: Text(
-                                "Socials",
-                                style: GoogleFonts.lato(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                top: h(0.02),
-                              ),
-                              child: Text(
-                                "GitHub",
-                                style: GoogleFonts.lato(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 8.0),
-                              child: Text(
-                                userCred.github,
-                                style: GoogleFonts.lato(
-                                  fontSize: 10,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                top: h(0.02),
-                              ),
-                              child: Text(
-                                "LinkDin",
-                                style: GoogleFonts.lato(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 8.0),
-                              child: Text(
-                                userCred.linkedin,
-                                style: GoogleFonts.lato(
-                                  fontSize: 10,
-                                ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Education",
+                                    style: GoogleFonts.lato(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 8.0),
+                                    child: Text(
+                                      "${userCred.universityJoined} - ${userCred.universityLeft}",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    userCred.university,
+                                    style: GoogleFonts.lato(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Text(
+                                    userCred.universityCGPA.toString(),
+                                    style: GoogleFonts.lato(
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 15.0),
+                                    child: Text(
+                                      "${userCred.highSchoolJoined} - ${userCred.highSchoolLeft}",
+                                      style: GoogleFonts.lato(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    userCred.highschool,
+                                    style: GoogleFonts.lato(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Text(
+                                    userCred.highSchoolmarks.toString(),
+                                    style: GoogleFonts.lato(
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -538,8 +331,218 @@ class _fresherTemplate4State extends State<fresherTemplate4> {
                   ),
                 ),
               ),
-            ),
-          ],
+              Expanded(
+                child: Container(
+                  height: h(1),
+                  color: Color.fromARGB(255, 137, 147, 221),
+                  child: InkWell(
+                    onTap: () => {},
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: h(0.04),
+                          ),
+                          child: Text(
+                            userCred.firstname,
+                            style: GoogleFonts.josefinSlab(
+                              fontSize: 45,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          userCred.lastname,
+                          style: GoogleFonts.josefinSlab(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        // AutoSizeText(Text(userCred.highlight)),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 14.0),
+                          child: AutoSizeText(
+                            userCred.highlight,
+                            maxLines: 1,
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 9, 32, 51)),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: h(0.05),
+                            left: w(0.02),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Skills",
+                                style: GoogleFonts.lato(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Text(
+                                "• ${userCred.skill1}",
+                                style: GoogleFonts.lato(
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Text(
+                                "• ${userCred.skill2}",
+                                style: GoogleFonts.lato(
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Text(
+                                "• ${userCred.skill3}",
+                                style: GoogleFonts.lato(
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Text(
+                                "• ${userCred.skill4}",
+                                style: GoogleFonts.lato(
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: h(0.03)),
+                                child: Text(
+                                  "Projects",
+                                  style: GoogleFonts.lato(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: h(0.02)),
+                                child: Text(
+                                  userCred.project1,
+                                  style: GoogleFonts.lato(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(right: 8.0),
+                                child: AutoSizeText(
+                                  // "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
+                                  userCred.project1Detail,
+                                  maxLines: 4,
+                                  style: GoogleFonts.lato(
+                                    fontSize: 10,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: h(0.015)),
+                                child: Text(
+                                  userCred.project2,
+                                  style: GoogleFonts.lato(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(right: 8.0),
+                                child: AutoSizeText(
+                                  // "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
+                                  userCred.project2Detail,
+                                  maxLines: 4,
+                                  style: GoogleFonts.lato(
+                                    fontSize: 10,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: h(0.02),
+                                ),
+                                child: Text(
+                                  userCred.project3,
+                                  style: GoogleFonts.lato(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(right: 8.0),
+                                child: AutoSizeText(
+                                  // "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing",
+                                  userCred.project3Detail,
+                                  style: GoogleFonts.lato(
+                                    fontSize: 10,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: h(0.03)),
+                                child: Text(
+                                  "Socials",
+                                  style: GoogleFonts.lato(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: h(0.02),
+                                ),
+                                child: Text(
+                                  "GitHub",
+                                  style: GoogleFonts.lato(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(right: 8.0),
+                                child: Text(
+                                  userCred.github,
+                                  style: GoogleFonts.lato(
+                                    fontSize: 10,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: h(0.02),
+                                ),
+                                child: Text(
+                                  "LinkDin",
+                                  style: GoogleFonts.lato(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(right: 8.0),
+                                child: Text(
+                                  userCred.linkedin,
+                                  style: GoogleFonts.lato(
+                                    fontSize: 10,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
